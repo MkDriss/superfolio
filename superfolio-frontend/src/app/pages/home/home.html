@@ -1,0 +1,24 @@
+<div class="home-container">
+    <div>
+        <h1>Welcome on my space</h1>
+    </div>
+
+    <section class="project-section">
+        <div>
+            <input type="text" placeholder="search">
+        </div>
+        <div class="projects-container">
+            @for (project of get_projects(); track project.id){
+            <app-project-card [project]="project" (click)="open_project_pop_up(project.id)"></app-project-card>
+            }
+        </div>
+    </section>
+</div>
+
+@if(show_project_pop_up){
+<div class="backdrop" animate.enter="fade-in" animate.leave="fade-out" (click)="close_project_pop_up()">
+    <div class="popup-wrapper" animate.enter="slide-in" animate.leave="slide-out" (click)="$event.stopPropagation()">
+        <app-project-pop-up [project]="selected_project!"></app-project-pop-up>
+    </div>
+</div>
+}

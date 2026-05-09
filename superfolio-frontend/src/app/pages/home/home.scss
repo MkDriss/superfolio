@@ -1,0 +1,110 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    grid-gap: 3em;
+    margin: 3em;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-wrapper {
+    z-index: 101;
+    width: 80vw;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.97);
+    }
+}
+
+.fade-in {
+    animation: fade-in 250ms ease-out forwards;
+}
+
+.fade-out {
+    animation: fade-out 200ms ease-in forwards;
+}
+
+.slide-in {
+    animation: slide-in 300ms ease-out forwards;
+}
+
+.slide-out {
+    animation: slide-out 200ms ease-in forwards;
+}
+
+@media (max-width:100em) {
+    .projects-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width:64em) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:40em) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}

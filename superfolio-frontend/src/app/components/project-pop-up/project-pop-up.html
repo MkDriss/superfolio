@@ -1,0 +1,19 @@
+<div class="project-pop-up-container">
+    <section class="picture-section">
+        <img class="selected_picture" src="{{get_current_picture()}}" alt="selected project picture">
+        <div class="pictures_overview">
+            @for(project_picture of project.overview_pictures; track project_picture){
+            <img src="{{project_picture}}" alt="{{project.name}}-picture">
+            }
+        </div>
+    </section>
+    <section class="description-section">
+        <h1>{{project.name}}</h1>
+        <h3>Category: {{project.category}}</h3>
+        <h3>Type: {{project.type}}</h3>
+        <h3>Technologies</h3>
+        @for(project_technologie of project.technologies; track project_technologie){
+
+        }
+    </section>
+</div>
