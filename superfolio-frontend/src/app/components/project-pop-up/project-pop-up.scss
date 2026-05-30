@@ -1,8 +1,9 @@
-.project-pop-up-container {
+.layout {
     background: #f3f4f6;
-    height: 100%;
+    height: calc(100% - 2em);
     overflow: hidden;
     border-radius: 2em;
+    padding: 1em;
     display: flex;
     justify-content: space-evenly;
 }

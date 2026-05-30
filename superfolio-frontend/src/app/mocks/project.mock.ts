@@ -1,4 +1,5 @@
 import { Project, ProjectCategory, ProjectType } from "../model/project.model";
+import { activemq, angular, csharp, css, docker, html, java, java_script, mvn } from "./technology.mock";
 
 export const PROJECTS_MOCK: Project[] = [
     {
@@ -6,59 +7,77 @@ export const PROJECTS_MOCK: Project[] = [
         name: "Snell",
         type: ProjectType.SCHOOL,
         category: ProjectCategory.DEV,
-        date: new Date(),
+        date: "",
         project_ico: "/projects/snell/pictures/snell.png",
         overview_pictures: [],
-        description: ""
+        description: "",
+        main_picture: "",
+        technologies: [java_script, html, css, docker],
+        url: ""
     },
     {
         id: 1,
         name: "Octave",
         type: ProjectType.SCHOOL,
         category: ProjectCategory.DEV,
-        date: new Date(),
+        date: "",
         project_ico: "/projects/octave/pictures/octave.png",
         overview_pictures: [],
-        description: ""
+        description: "",
+        main_picture: "",
+        technologies: [angular, java_script, docker],
+        url: ""
     },
     {
         id: 2,
         name: "SophiaTech Eat",
         type: ProjectType.SCHOOL,
         category: ProjectCategory.DEV,
-        date: new Date(),
+        date: "",
         project_ico: "",
         overview_pictures: [],
-        description: ""
+        description: "",
+        main_picture: "",
+        technologies: [java, angular, mvn, docker],
+        url: ""
     },
     {
         id: 3,
         name: "Let's go Biking",
         type: ProjectType.SCHOOL,
         category: ProjectCategory.DEV,
-        date: new Date(),
+        date: "",
         project_ico: "",
         overview_pictures: [],
-        description: ""
+        description: "",
+        main_picture: "",
+        technologies: [html, java_script, css, activemq, csharp],
+        url: ""
     },
     {
         id: 4,
         name: "NAS Home Server",
         type: ProjectType.HOME,
         category: ProjectCategory.CYBER,
-        date: new Date(),
+        date: "",
         project_ico: "",
         overview_pictures: [],
-        description: ""
+        description: "",
+        main_picture: "",
+        technologies: [],
+        url: ""
     },
     {
         id: 5,
         name: "ESP32 Marauder",
         type: ProjectType.HOME,
         category: ProjectCategory.CYBER,
-        date: new Date(),
+        date: "",
         project_ico: "",
         overview_pictures: [],
-        description: ""
+        description: "",
+        main_picture: "",
+        technologies: [],
+        url: ""
     },
 ]

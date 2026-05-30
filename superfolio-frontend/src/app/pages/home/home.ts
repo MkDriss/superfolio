@@ -3,6 +3,7 @@ import { ProjectCard } from '../../components/project-card/project-card';
 import { ProjectService } from '../../services/project-service/project-service';
 import { ProjectPopUp } from '../../components/project-pop-up/project-pop-up';
 import { Project } from '../../model/project.model';
+import { technologies } from '../../mocks/technology.mock';
 
 @Component({
   selector: 'app-home',
@@ -38,5 +39,7 @@ export class Home {
     this.selected_project = null;
   }
 
-  public get_projects() { return this.projectsService.get_projects(); }
+  public get projects() { return this.projectsService.get_projects(); }
+
+  public get technologies() { return technologies.sort((a,b) => a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })) }
 }
