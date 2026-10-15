@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from '../../model/project.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -12,7 +12,10 @@ export class ProjectPopUp {
   @Input()
   project!: Project;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  @Output()
+  close: EventEmitter<void> = new EventEmitter();
+
+  constructor(private sanitizer: DomSanitizer) { }
 
   current_picture_index: number = 0;
 
@@ -28,5 +31,8 @@ export class ProjectPopUp {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
+  public trigger_close() {
+    this.close.emit();
+  }
 
 }

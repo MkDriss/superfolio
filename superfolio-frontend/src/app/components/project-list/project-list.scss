@@ -1,0 +1,282 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+// verre dépoli réutilisé par la recherche, le sélecteur et le bouton
+@mixin glass($radius) {
+    background: rgba(15, 20, 30, 0.45);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: $radius;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        0 8px 24px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+// ---------- Layout ----------
+
+.my-project-container {
+    position: relative; // référence pour .hero-bg et .next-btn-container
+    width: 100%;
+    min-height: 100vh; // au moins un écran, grandit avec les cartes
+    overflow: hidden;
+
+    // voile sombre pour la lisibilité (même principe que About me)
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.35);
+    }
+}
+
+// ---------- Image de fond ----------
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+// ---------- Contenu ----------
+
+.my-project-list-content {
+    position: relative; // <-- c'est ce qui manquait : sans position, z-index est ignoré
+    z-index: 2;         // au-dessus de l'image (0) et du voile (1)
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 5rem 2rem 4rem; // le bas laisse la place au bouton
+}
+
+.title {
+    margin: 0;
+    font-family: "Archivo", sans-serif;
+    font-weight: 700;
+    font-size: 65px;
+    color: white;
+}
+
+
+// ---------- Recherche et filtre ----------
+
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.search-input,
+.category-selector {
+    @include glass(999px);
+    height: 3rem;
+    padding: 0 1.4rem;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+
+    &:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 3px;
+    }
+}
+
+.search-input {
+    flex: 1;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+.category-selector {
+    width: 25%;
+    cursor: pointer;
+
+    // la liste déroulante native garde un fond clair
+    option {
+        color: #111;
+        background: white;
+    }
+}
+
+// ---------- Grille de projets ----------
+
+.project-section {
+    width: 100%;
+    min-height: 80vh;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 3em;
+    width: 100%;
+}
+
+// ---------- Bouton suivant ----------
+
+.next-btn-container {
+    position: absolute;
+    z-index: 2;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    @include glass(999px);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.9rem 1.8rem;
+
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+
+    svg {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 3px;
+    }
+}
+
+// ---------- Popup ----------
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-wrapper {
+    z-index: 101;
+    width: 80vw;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+// ---------- Animations ----------
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.97);
+    }
+}
+
+.fade-in {
+    animation: fade-in 250ms ease-out forwards;
+}
+
+.fade-out {
+    animation: fade-out 200ms ease-in forwards;
+}
+
+.slide-in {
+    animation: slide-in 300ms ease-out forwards;
+}
+
+.slide-out {
+    animation: slide-out 200ms ease-in forwards;
+}
+
+// ---------- Responsive ----------
+
+@media (max-width: 100em) {
+    .projects-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 64em) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 40em) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .category-selector {
+        width: 100%;
+    }
+}

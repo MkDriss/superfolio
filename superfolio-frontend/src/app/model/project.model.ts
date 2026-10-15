@@ -15,11 +15,11 @@ export interface Project {
 }
 
 export const enum ProjectCategory {
-    DEV = "Développement Logiciel",
-    CYBER = "Cyber Sécurité"
+    DEV = "Software developpment",
+    CYBER = "Cyber security"
 }
 
 export const enum ProjectType {
-    SCHOOL = "Projet d'École",
-    HOME = "Project Perso"
+    SCHOOL = "School Project",
+    HOME = "Personal Project"
 }

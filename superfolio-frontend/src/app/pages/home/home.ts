@@ -1,45 +1,26 @@
 import { Component } from '@angular/core';
-import { ProjectCard } from '../../components/project-card/project-card';
-import { ProjectService } from '../../services/project-service/project-service';
-import { ProjectPopUp } from '../../components/project-pop-up/project-pop-up';
-import { Project } from '../../model/project.model';
-import { technologies } from '../../mocks/technology.mock';
+import { ProjectList } from '../../components/project-list/project-list';
+import { ContactMe } from '../../components/contact-me/contact-me';
+import { AboutMe } from '../../components/about-me/about-me';
+import { FirstPage } from '../../components/first-page/first-page';
 
 @Component({
   selector: 'app-home',
-  imports: [ProjectCard, ProjectPopUp],
+  imports: [ProjectList, AboutMe, ContactMe, FirstPage],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
 
-  public show_project_pop_up: boolean = false;
 
-  public selected_project: Project | null = null;
+  scroll_to(section_id: string): void {
 
-  constructor(private projectsService: ProjectService) {
+    const reduce_motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    document.getElementById(section_id)?.scrollIntoView({
+      behavior: reduce_motion ? 'auto' : 'smooth',
+      block: 'start',
+    });
   }
 
-  public open_project_pop_up(project_id: number) {
-    const project: Project | undefined = this.projectsService.get_project_by_id(project_id);
-    if (project) {
-      this.selected_project = project;
-      this.show_project_pop_up = true;
-      console.log("project displayed: ", project);
-    } else {
-      this.selected_project = null;
-      this.show_project_pop_up = false;
-      console.error("Failed to dsplay project with id", project_id)
-    }
-  }
-
-  public close_project_pop_up() {
-    this.show_project_pop_up = false;
-    this.selected_project = null;
-  }
-
-  public get projects() { return this.projectsService.get_projects(); }
-
-  public get technologies() { return technologies.sort((a,b) => a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })) }
 }

@@ -1,5 +1,5 @@
 import { Project, ProjectCategory, ProjectType } from "../model/project.model";
-import { activemq, angular, csharp, css, docker, html, java, java_script, mvn } from "./technology.mock";
+import { activemq, angular, csharp, css, docker, html, java, java_script, mvn, spring_boot } from "./technology.mock";
 
 export const PROJECTS_MOCK: Project[] = [
     {
@@ -9,9 +9,18 @@ export const PROJECTS_MOCK: Project[] = [
         category: ProjectCategory.DEV,
         date: "",
         project_ico: "/projects/snell/pictures/snell.png",
-        overview_pictures: [],
+        overview_pictures: [
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+            "/projects/snell/pictures/snell_home_page.png",
+        ],
         description: "",
-        main_picture: "",
+        main_picture: "/projects/snell/pictures/snell_home_page.png",
         technologies: [java_script, html, css, docker],
         url: ""
     },
@@ -53,6 +62,19 @@ export const PROJECTS_MOCK: Project[] = [
         main_picture: "",
         technologies: [html, java_script, css, activemq, csharp],
         url: ""
+    },
+    {
+        id: 4,
+        name: "Skimaster",
+        type: ProjectType.SCHOOL,
+        date: "",
+        technologies: [java, spring_boot, angular],
+        url: "",
+        category: ProjectCategory.DEV,
+        project_ico: "",
+        main_picture: "",
+        overview_pictures: [],
+        description: ""
     },
     {
         id: 4,
