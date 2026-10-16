@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-// verre dépoli réutilisé par la recherche, le sélecteur et le bouton
+// verre dépoli réutilisé par la recherche, le sélecteur et les boutons
 @mixin glass($radius) {
     background: rgba(15, 20, 30, 0.45);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
@@ -19,7 +19,7 @@
 // ---------- Layout ----------
 
 .my-project-container {
-    position: relative; // référence pour .hero-bg et .next-btn-container
+    position: relative; // référence pour .hero-bg
     width: 100%;
     min-height: 100vh; // au moins un écran, grandit avec les cartes
     overflow: hidden;
@@ -32,14 +32,6 @@
         z-index: 1;
         background: rgba(0, 0, 0, 0.35);
     }
-}
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    gap: 1.5rem; // au lieu de 3em
-    width: 100%;
 }
 
 // ---------- Image de fond ----------
@@ -57,13 +49,13 @@
 // ---------- Contenu ----------
 
 .my-project-list-content {
-    position: relative; // <-- c'est ce qui manquait : sans position, z-index est ignoré
+    position: relative; // sans position, z-index serait ignoré
     z-index: 2; // au-dessus de l'image (0) et du voile (1)
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2.5rem;
-    padding: 5rem 2rem 4rem; // le bas laisse la place au bouton
+    padding: 5rem 2rem 4rem;
 }
 
 .title {
@@ -74,10 +66,11 @@
     color: white;
 }
 
-
 // ---------- Recherche et filtre ----------
 
 .search-section {
+    --control-h: 3rem; // une seule hauteur pour le champ et les boutons ronds
+
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -87,7 +80,8 @@
 .search-input,
 .category-selector {
     @include glass(999px);
-    height: 3rem;
+    box-sizing: border-box;
+    height: var(--control-h);
     padding: 0 1.4rem;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
@@ -99,19 +93,28 @@
     }
 }
 
+.search-input {
+    flex: 1;
+    min-width: 0; // sans ça, un input ne rétrécit pas sous sa largeur par défaut
+    -webkit-appearance: none; // supprime le style natif de type="search" sur Safari
+    appearance: none;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+// boutons ronds (filtre, recherche) : même hauteur que le champ
 .search-ico {
     @include glass(999px);
-    box-sizing: content-box; // voir la remarque plus bas
-    height: 2rem;
-    padding: 1rem;
+    flex: none; // ne rétrécit jamais
+    box-sizing: border-box;
+    width: var(--control-h);
+    height: var(--control-h);
+    padding: 0.75rem; // icône de ~1.5rem dans un rond de 3rem
     cursor: pointer;
     stroke: rgba(255, 255, 255, 0.7);
     transition: background-color 0.3s ease-out, stroke 0.3s ease-out;
-
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.7);
-        stroke: rgba(15, 20, 30, 0.9);
-    }
 
     &:focus-visible {
         outline: 2px solid white;
@@ -119,12 +122,18 @@
     }
 }
 
-.search-input {
-    flex: 1;
-
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
+// survol : uniquement avec une vraie souris (sur tactile, le :hover reste collé après le tap)
+@media (hover: hover) {
+    .search-ico:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+        stroke: rgba(15, 20, 30, 0.9);
     }
+}
+
+// retour visuel pendant l'appui, qui s'éteint dès que le doigt se lève
+.search-ico:active {
+    background-color: rgba(255, 255, 255, 0.7);
+    stroke: rgba(15, 20, 30, 0.9);
 }
 
 .category-selector {
@@ -148,7 +157,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    gap: 3em;
+    gap: 1.5rem;
     width: 100%;
 }
 
@@ -285,12 +294,12 @@ app-project-pop-up {
 }
 
 @media (max-width: 64em) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr);
+    .title {
+        font-size: 45px;
     }
 
-    .search-section {
-        width: 100%;
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -299,12 +308,21 @@ app-project-pop-up {
         grid-template-columns: 1fr;
     }
 
+    // la recherche reste sur une seule ligne : champ + boutons ronds
     .search-section {
-        flex-direction: column;
-        align-items: stretch;
+        --control-h: 2.75rem;
+        flex-wrap: wrap; // seulement utile si tu réactives le <select>
+        gap: 0.6rem;
     }
 
+    .search-input {
+        padding: 0 1rem;
+        font-size: 16px; // évite le zoom automatique de Safari iOS au focus
+    }
+
+    // si le <select> est réactivé : il passe sous la ligne de recherche
     .category-selector {
+        order: 1;
         width: 100%;
     }
 }
