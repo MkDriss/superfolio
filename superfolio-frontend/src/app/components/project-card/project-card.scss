@@ -1,23 +1,77 @@
+:host {
+    display: block;
+    width: 100%;
+    max-width: 25rem; // la carte se réduit avec la colonne de la grille
+}
+
 .project-card-container {
-    height: 15em;
-    width: 25em;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
+    position: relative; // référence pour le nom en surimpression
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.92); // fond de secours derrière les logos
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+    transition: transform 0.25s ease-out;
 
     &:hover {
-        cursor: pointer;
-        transform: scale(1.05);
+        transform: scale(1.04);
     }
 }
 
+// l'image occupe toute la carte
 .project-card-picture {
-    height: 12em;
-    width: 25em;
-    border-radius: 1.5em;
-    object-fit: contain;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // passe à "contain" si tes logos sont rognés
+}
+
+// nom en surimpression, visible au survol
+.project-card-name {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 2.5rem 1.2rem 1rem;
+    pointer-events: none;
+
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+    // dégradé : garde le texte lisible sur une image claire
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.project-card-container:hover .project-card-name,
+:host(:focus-visible) .project-card-name {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+// pas de survol sur écran tactile : le nom reste affiché
+@media (hover: none) {
+    .project-card-name {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card-container,
+    .project-card-name {
+        transition: none;
+    }
+
+    .project-card-container:hover {
+        transform: none;
+    }
 }

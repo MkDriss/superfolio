@@ -6,12 +6,26 @@
 
         <div class="search-section">
             <input type="search" class="search-input" placeholder="Search a project" aria-label="Search a project">
-            <select class="category-selector" aria-label="Filter by technology">
+            <!-- <select class="category-selector" aria-label="Filter by technology">
                 <option [value]="-1">All technologies</option>
                 @for (technology of technologies; track technology.id) {
                 <option [value]="technology.id">{{technology.name}}</option>
                 }
-            </select>
+            </select> -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-ico">
+                <path
+                    d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+            </svg>
+            <svg class="search-ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path
+                        d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
         </div>
 
         <div class="project-section">
@@ -21,8 +35,8 @@
                 }
             </div>
         </div>
-    </div>
 
+        
     <div class="next-btn-container">
         <button class="button" (click)="next.emit()">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -33,6 +47,8 @@
             Contact me
         </button>
     </div>
+    </div>
+
 </section>
 
 @if (show_project_pop_up) {
