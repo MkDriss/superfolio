@@ -5,50 +5,51 @@
         <h2 class="title">My projects</h2>
 
         <div class="search-section">
-            <input type="search" class="search-input" placeholder="Search a project" aria-label="Search a project">
-            <!-- <select class="category-selector" aria-label="Filter by technology">
-                <option [value]="-1">All technologies</option>
-                @for (technology of technologies; track technology.id) {
-                <option [value]="technology.id">{{technology.name}}</option>
-                }
-            </select> -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-ico">
-                <path
-                    d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
-            </svg>
-            <svg class="search-ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
+            <input #search_input type="search" class="search-input" placeholder="Search a project"
+                aria-label="Search a project" (keydown.enter)="search(search_input.value)">
+
+            <button class="search-ico" type="button" (click)="open_filter_panel()"
+                [attr.aria-label]="active_filter_count ? 'Open filters (' + active_filter_count + ' active)' : 'Open filters'">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path
-                        d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </g>
-            </svg>
+                        d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                </svg>
+                @if (active_filter_count > 0) {
+                <span class="filter-badge" aria-hidden="true">{{active_filter_count}}</span>
+                }
+            </button>
+
+            <button class="search-ico" type="button" aria-label="Search" (click)="search(search_input.value)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path
+                        d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" />
+                </svg>
+            </button>
         </div>
 
         <div class="project-section">
             <div class="projects-container">
-                @for (project of projects; track project.id) {
+                @for (project of displayed_projects; track project.id) {
                 <app-project-card [project]="project" (click)="open_project_pop_up(project.id)"></app-project-card>
+                } @empty {
+                <p class="empty-state">No project matches your search.</p>
                 }
             </div>
         </div>
 
-        
-    <div class="next-btn-container">
-        <button class="button" (click)="next.emit()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M12 3C12.5523 3 13 3.44772 13 4V17.5858L18.2929 12.2929C18.6834 11.9024 19.3166 11.9024 19.7071 12.2929C20.0976 12.6834 20.0976 13.3166 19.7071 13.7071L12.7071 20.7071C12.3166 21.0976 11.6834 21.0976 11.2929 20.7071L4.29289 13.7071C3.90237 13.3166 3.90237 12.6834 4.29289 12.2929C4.68342 11.9024 5.31658 11.9024 5.70711 12.2929L11 17.5858V4C11 3.44772 11.4477 3 12 3Z"
-                    fill="currentColor"></path>
-            </svg>
-            Contact me
-        </button>
+        <div class="next-btn-container">
+            <button class="button" (click)="next.emit()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 3C12.5523 3 13 3.44772 13 4V17.5858L18.2929 12.2929C18.6834 11.9024 19.3166 11.9024 19.7071 12.2929C20.0976 12.6834 20.0976 13.3166 19.7071 13.7071L12.7071 20.7071C12.3166 21.0976 11.6834 21.0976 11.2929 20.7071L4.29289 13.7071C3.90237 13.3166 3.90237 12.6834 4.29289 12.2929C4.68342 11.9024 5.31658 11.9024 5.70711 12.2929L11 17.5858V4C11 3.44772 11.4477 3 12 3Z"
+                        fill="currentColor"></path>
+                </svg>
+                Contact me
+            </button>
+        </div>
     </div>
-    </div>
-
 </section>
 
 @if (show_project_pop_up) {
@@ -57,4 +58,12 @@
         <app-project-pop-up [project]="selected_project!" (close)="close_project_pop_up()"></app-project-pop-up>
     </div>
 </div>
+}
+
+@if (show_filter_panel) {
+<!-- frères (et non imbriqués) : chacun joue sa propre animation de sortie -->
+<div class="filter-backdrop" animate.enter="fade-in" animate.leave="fade-out" (click)="close_filter_panel()"></div>
+<app-project-filter-panel animate.enter="drawer-in" animate.leave="drawer-out" [filters]="filters"
+    [technologies]="technologies" (filters_change)="filters = $event" (search)="search(search_input.value)"
+    (close)="close_filter_panel()"></app-project-filter-panel>
 }

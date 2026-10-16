@@ -1,0 +1,58 @@
+<aside class="panel" role="dialog" aria-modal="true" aria-labelledby="filter-panel-title">
+    <header class="panel-header">
+        <button class="close-btn" type="button" (click)="close.emit()" aria-label="Close filters">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+            </svg>
+        </button>
+        <h3 class="panel-title" id="filter-panel-title">Filters</h3>
+    </header>
+
+    <div class="panel-body">
+        <section class="filter-group">
+            <h4 class="filter-label">Category</h4>
+            <div class="chips">
+                @for (category of categories; track category) {
+                <button class="chip" type="button" [class.chip--active]="filters.categories.includes(category)"
+                    [attr.aria-pressed]="filters.categories.includes(category)" (click)="toggle_category(category)">
+                    {{category}}
+                </button>
+                }
+            </div>
+        </section>
+
+        <section class="filter-group">
+            <h4 class="filter-label">Type</h4>
+            <div class="chips">
+                @for (type of types; track type) {
+                <button class="chip" type="button" [class.chip--active]="filters.types.includes(type)"
+                    [attr.aria-pressed]="filters.types.includes(type)" (click)="toggle_type(type)">
+                    {{type}}
+                </button>
+                }
+            </div>
+        </section>
+
+        <section class="filter-group">
+            <h4 class="filter-label">Technologies</h4>
+            <div class="chips">
+                @for (technology of technologies; track technology.id) {
+                <button class="chip" type="button" [class.chip--active]="filters.technologies.includes(technology.id)"
+                    [attr.aria-pressed]="filters.technologies.includes(technology.id)"
+                    (click)="toggle_technology(technology.id)">
+                    {{technology.name}}
+                </button>
+                }
+            </div>
+        </section>
+    </div>
+
+    <footer class="panel-footer">
+        <button class="reset-btn" type="button" (click)="reset()" [disabled]="active_count === 0">
+            Clear all
+        </button>
+        <button class="apply-btn" type="button" (click)="search.emit()">Search</button>
+    </footer>
+</aside>
