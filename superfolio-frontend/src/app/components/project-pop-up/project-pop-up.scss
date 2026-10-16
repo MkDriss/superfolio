@@ -61,7 +61,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
     gap: 2.5rem;
-    padding: 3.5rem 2.5rem 2.5rem;
+    padding: 2.5rem;
 
     
 }
@@ -88,8 +88,10 @@
 .pictures-overview {
     display: flex;
     gap: 0.6rem;
+    flex-wrap: wrap;
     padding-bottom: 0.4rem;
-    overflow-x: auto;
+    max-height: 20rem;
+    overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
