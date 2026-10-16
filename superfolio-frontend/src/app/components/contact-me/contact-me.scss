@@ -176,3 +176,12 @@
         outline-offset: 3px;
     }
 }
+
+@media (max-width:64em) {
+    .title {
+        font-family: "Archivo", sans-serif;
+        font-weight: 700;
+        font-size: 55px;
+        color: white;
+    }
+}

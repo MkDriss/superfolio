@@ -22,6 +22,7 @@ $fourth-wave-delay: $third-wave-delay + 0.2;
     position: relative; // référence pour .hero-bg et .welcome-text
     width: 100%;
     height: 100vh;
+    height: 100svh; // mobile : exclut la barre d'adresse, le bouton reste visible
     overflow: hidden; // clippe les animations qui débordent
 }
 
@@ -46,16 +47,13 @@ $fourth-wave-delay: $third-wave-delay + 0.2;
     justify-content: space-between;
     gap: 2rem;
     padding: 0 2rem;
-    // background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent); // lisibilité du texte blanc
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.20), transparent); // lisibilité du texte blanc
 }
 
 .title {
     margin: 0;
     font-family: "Anton", sans-serif;
-    font-weight:400;
-    // font-family: "Roboto Condensed", sans-serif;
-    // font-weight: 900;
+    font-weight: 400;
     font-size: 120px;
     width: 60rem;
     height: fit-content;
@@ -66,6 +64,7 @@ $fourth-wave-delay: $third-wave-delay + 0.2;
 
 .next-btn-container {
     position: absolute;
+    z-index: 2; // au-dessus du header et du dégradé mobile
     bottom: 2rem;
     left: 0;
     width: 100%;
@@ -272,15 +271,65 @@ app-who-am-i {
 // ---------- Responsive ----------
 
 @media (max-width: 64em) {
-    .header {
-        flex-wrap: wrap;
-        justify-content: center;
+
+    // nav et réseaux masqués : le bouton et la section contact les remplacent
+    .nav-bar,
+    .media-container {
+        display: none;
     }
 
+    // dégradé en bas : lisibilité du message d'accueil et du bouton
+    .first-page::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        z-index: 0; // au-dessus de l'image (qui précède dans le DOM), sous le texte
+        height: 55%;
+        pointer-events: none;
+        background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.75) 0%,
+                rgba(0, 0, 0, 0.4) 50%,
+                transparent 100%);
+    }
+
+    // titre centré au milieu de l'écran
+    .header {
+        position: absolute;
+        top: 0rem;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.5rem 0;
+        // background: none;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.20), transparent); // lisibilité du texte blanc
+
+        pointer-events: none; // ne bloque pas le bouton
+    }
+
+    .title {
+
+        width: 100%; // annule les 60rem du bureau
+        font-size: clamp(2.4rem, 12vw, 4.5rem);
+        text-align: center;
+
+        font-family: "Archivo", sans-serif;
+        font-weight: 700;
+
+    }
+
+    // message juste au-dessus du bouton
     .welcome-text {
-        right: 1rem;
-        left: 1rem;
+        top: auto;
+        right: 0;
+        bottom: 8rem;
+        left: 0;
         width: auto;
-        font-size: 36px;
+        padding: 0 2rem;
+        font-size: clamp(1.8rem, 8vw, 2rem);
+        text-align: center;
+    }
+
+    // bouton légèrement relevé
+    .next-btn-container {
+        bottom: 3.5rem;
     }
 }

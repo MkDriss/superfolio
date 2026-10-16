@@ -17,7 +17,7 @@
     background: rgba(15, 20, 30, 0.6);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
     backdrop-filter: blur(24px) saturate(150%);
-    
+
 }
 
 .close-btn {
@@ -62,8 +62,7 @@
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
     gap: 2.5rem;
     padding: 2.5rem;
-
-    
+    overscroll-behavior: contain;
 }
 
 // ---------- Images ----------
