@@ -11,6 +11,7 @@
         <section class="picture-section">
             <img class="selected-picture" src="{{current_picture}}" alt="Selected picture of {{project.name}}">
 
+            @if (project.overview_pictures && project.overview_pictures.length > 0) {
             <div class="pictures-overview">
                 @for (project_picture of project.overview_pictures; track project_picture; let i = $index) {
                 <button class="thumb" type="button" [class.thumb--active]="i === current_picture_index"
@@ -19,12 +20,19 @@
                 </button>
                 }
             </div>
+            }
         </section>
 
         <section class="description-section">
             <h2 class="project-title">{{project.name}}</h2>
 
             <dl class="meta">
+                @if (project.mention && project.mention.content !== "") {
+                <div class="meta-row">
+                    <dt>Mention</dt>
+                    <dd>{{project.mention.content}}</dd>
+                </div>
+                }
                 <div class="meta-row">
                     <dt>Category</dt>
                     <dd>{{project.category}}</dd>
@@ -44,15 +52,19 @@
                 </div>
             </div>
 
-            <!-- remplace par le champ de description de ton modèle : {{project.description}} -->
+
+            @if(project.description && project.description !== ""){
             <div class="description">
                 <h3 class="section-label">Description</h3>
                 <p class="project-description">
+                    {{project.description}}
                 </p>
             </div>
+            }
+
 
             <div class="button-section">
-                <button class="learn-more-btn" type="button">Learn more</button>
+                <button class="learn-more-btn" type="button" (click)="navigate_to(project.path)">Learn more</button>
             </div>
         </section>
     </div>

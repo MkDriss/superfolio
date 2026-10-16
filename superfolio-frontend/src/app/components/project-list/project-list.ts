@@ -2,6 +2,7 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { ProjectCard } from '../project-card/project-card';
 import { ProjectPopUp } from '../project-pop-up/project-pop-up';
 import { ProjectFilterPanel } from '../project-filter-panel/project-filter-panel';
+import { RevealDirective } from '../../directives/reveal.directive';
 import { ProjectService } from '../../services/project-service/project-service';
 import { technologies } from '../../mocks/technology.mock';
 import { Project } from '../../model/project.model';
@@ -10,7 +11,7 @@ import { ProjectFilters, count_active_filters, create_empty_filters } from '../.
 
 @Component({
   selector: 'app-project-list',
-  imports: [ProjectCard, ProjectPopUp, ProjectFilterPanel],
+  imports: [ProjectCard, ProjectPopUp, ProjectFilterPanel, RevealDirective],
   templateUrl: './project-list.html',
   styleUrl: './project-list.scss',
 })

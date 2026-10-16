@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../../model/project.model';
 import { ProjectFilters } from '../../model/project-filters.model';
-import { PROJECTS_MOCK } from '../../mocks/project.mock';
+import { PROJECTS } from '../../mocks/project.mock';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectService {
 
-  private projects: Project[] = PROJECTS_MOCK;
+  private projects: Project[] = PROJECTS;
 
   public get_projects() {
     return this.projects;
@@ -32,6 +32,17 @@ export class ProjectService {
       && (filters.technologies.length === 0
         || filters.technologies.some(id => project.technologies.some(t => t.id === id)))
     );
+  }
+
+    public get_mention_place(project:Project): string {
+    if (project.mention) {
+      switch (project.mention.place) {
+        case 1: return "🥇";
+        case 2: return "🥈";
+        case 3: return "🥉";
+        default: return "";
+      }
+    } else return "";
   }
 
 }

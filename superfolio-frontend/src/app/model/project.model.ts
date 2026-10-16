@@ -6,12 +6,18 @@ export interface Project {
     type: ProjectType,
     date: string,
     technologies: Technology[]
-    url: string,
+    path: string,
     category: ProjectCategory
     project_ico: string,
     main_picture: string,
     overview_pictures: string[],
     description: string,
+    mention?: Mention ,
+}
+
+interface Mention {
+    content:string,
+    place:number
 }
 
 export const enum ProjectCategory {
