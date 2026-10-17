@@ -9,7 +9,7 @@
     position: relative; // référence pour .background et .scrim
     display: flex;
     align-items: center; // texte centré verticalement
-    min-height: 100vh;
+    min-height: 100dvh;
     min-height: 100svh; // mobile : exclut la barre d'adresse
     overflow: hidden;
     background-color: #0f141e; // visible le temps que l'image se charge

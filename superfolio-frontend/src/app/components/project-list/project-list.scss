@@ -21,7 +21,7 @@
 .my-project-container {
     position: relative; // référence pour .hero-bg
     width: 100%;
-    min-height: 100vh; // au moins un écran, grandit avec les cartes
+    min-height: 100dvh; // au moins un écran, grandit avec les cartes
     overflow: hidden;
 
     // voile sombre pour la lisibilité (même principe que About me)
@@ -341,7 +341,7 @@ app-project-pop-up {
     }
 
     .popup-wrapper {
-        height: 100vh;
+        height: 100dvh;
         width: 100vw;
         border-radius: 0px;
     }

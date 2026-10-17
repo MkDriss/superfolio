@@ -21,7 +21,7 @@ $fourth-wave-delay: $third-wave-delay + 0.2;
 .first-page {
     position: relative; // référence pour .hero-bg et .welcome-text
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     height: 100svh; // mobile : exclut la barre d'adresse, le bouton reste visible
     overflow: hidden; // clippe les animations qui débordent
 }

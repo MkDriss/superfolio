@@ -6,7 +6,7 @@
 .about-me-container {
     position: relative; // référence pour .hero-bg
     width: 100%;
-    min-height: 100vh; // au moins un écran, grandit avec les cartes
+    min-height: 100dvh; // au moins un écran, grandit avec les cartes
     overflow: hidden;
 }
 
