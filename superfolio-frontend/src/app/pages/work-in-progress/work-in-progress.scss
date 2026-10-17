@@ -61,6 +61,7 @@
     gap: 5rem;
     max-width: min(60%, 45rem);
     padding: 0 clamp(2rem, 8vw, 8rem);
+    padding-top: calc(4rem + env(safe-area-inset-top));
 }
 
 .title {

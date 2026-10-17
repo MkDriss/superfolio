@@ -15,6 +15,7 @@ $fourth-wave-delay: $third-wave-delay + 0.2;
     overflow-x: hidden;
     // gap: 10rem;
     overflow-y: auto;
+    overscroll-behavior-y: contain;
     scroll-behavior: smooth;
 }
 
