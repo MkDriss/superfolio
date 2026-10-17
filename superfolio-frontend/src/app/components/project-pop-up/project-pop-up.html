@@ -47,7 +47,9 @@
                 <h3 class="section-label">Technologies</h3>
                 <div class="technologies-list">
                     @for (project_technologie of project.technologies; track project_technologie.id) {
-                    <span class="technology-ico" [innerHTML]="sanitizeSvg(project_technologie.picture)"></span>
+                    <span class="technology-ico" role="img" tabindex="0" [attr.data-name]="project_technologie.name"
+                        [attr.aria-label]="project_technologie.name"
+                        [innerHTML]="sanitizeSvg(project_technologie.picture)"></span>
                     }
                 </div>
             </div>
@@ -64,7 +66,7 @@
 
 
             <div class="button-section">
-                <button class="learn-more-btn" type="button" (click)="navigate_to(project.path)">Learn more</button>
+                <button class="learn-more-btn" type="button" (click)="navigate_to(project.path)">See more</button>
             </div>
         </section>
     </div>

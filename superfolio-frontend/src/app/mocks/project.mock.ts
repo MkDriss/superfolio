@@ -1,5 +1,5 @@
 import { Project, ProjectCategory, ProjectType } from "../model/project.model";
-import { activemq, angular, csharp, css, docker, html, java, java_script, mongo_db, mvn, nginx, spring_boot, type_script } from "./technology.mock";
+import { activemq, angular, arduino, cloudflare, cpp, csharp, css, docker, dot_net_core, html, java, java_script, linux, mongo_db, mvn, nginx, node_js, python, raspberry_pi, rust, spring_boot, type_script } from "./technology.mock";
 
 const project_list: Project[] = [
     {
@@ -29,16 +29,16 @@ const project_list: Project[] = [
             "/projects/snell/pictures/inventory-page.png",
             "/projects/snell/pictures/review-game.png",
             "/projects/snell/pictures/snell_home_page.png",
-
         ],
         description: "Snell is a school project built in a team of two: a multiplayer web reimagination of Khet, the laser board game, where players move and rotate mirrored pieces, fire lasers and try to take down the opponent’s king.\n\n"
             + "The platform runs on a microservice architecture behind an API gateway, using Node.js with our own lightweight HTTP framework (built from scratch instead of relying on Express), Socket.IO for real-time play, MongoDB and Docker Compose.\n\n"
-            + "It features online matchmaking, AI opponents with different levels, game replays, a tutorial, chat, friends, achievements and a Stripe-powered shop, and also ships as an Android app through Capacitor.\n\n"
+            + "It features online matchmaking, an AI opponent, game replays, a tutorial, chat, achievements and a Stripe-powered shop, and also ships as an Android app through Capacitor.\n\n"
+            + "To keep the platform running smoothly, server performance is monitored in real time.\n\n"
             + "On the security side, the gateway handles authentication and TLS, and the database is backed up nightly with AES-256 encryption.\n\n"
-            + "This is the project that won us first place at the Fullstack Contest, 2026 edition 🥇",
+            + "This is the project that won us first place at the Fullstack Contest, 2026 edition.",
 
         main_picture: "/projects/snell/pictures/snell_home_page.png",
-        technologies: [java_script, html, css, docker, mongo_db],
+        technologies: [node_js, java_script, html, css, docker, mongo_db],
         path: "snell",
         mention: {
             content: "#1 place at the Fullstack Contest, 2026 edition 🥇",
@@ -61,9 +61,13 @@ const project_list: Project[] = [
             "/projects/octave/pictures/quiz-list-page.png",
             "/projects/octave/pictures/quiz-creation-interface.png",
         ],
-        description: "",
+        description: "Built in a team of four with a user-experience-first approach, this is a game platform adapted for people living with Alzheimer's disease.\n\n"
+            + "At its heart is a music quiz: every question comes with a song, and every quiz is fully customizable, from the questions and answers to the music that accompanies them.\n\n"
+            + "Patients can play solo, or join real-time multiplayer games that bring a touch of friendly competition.\n\n"
+            + "Behind the scenes, a dedicated configuration area lets the staff of the day care center build and adapt quizzes. They can also follow each patient's statistics across the different game modes, and use them to tailor the quizzes to the person playing.\n\n"
+            + "This is the project that won us first place at the Fullstack Contest, 2025 edition 🥇",
         main_picture: "",
-        technologies: [angular, type_script, docker, nginx],
+        technologies: [node_js, angular, type_script, java_script, docker, nginx],
         path: "octave",
         mention: { content: "#1 place at the Fullstack Contest, 2025 edition 🥇", place: 1 }
 
@@ -89,11 +93,11 @@ const project_list: Project[] = [
         type: ProjectType.SCHOOL,
         category: ProjectCategory.DEV,
         date: "",
-        project_ico: "package.png",
-        overview_pictures: ["package.png"],
+        project_ico: "icons/package.png",
+        overview_pictures: ["icons/package.png"],
         description: "",
         main_picture: "",
-        technologies: [html, java_script, css, activemq, csharp],
+        technologies: [html, java_script, css, activemq, csharp, dot_net_core],
         path: "lets-go-biking"
     },
     {
@@ -101,13 +105,15 @@ const project_list: Project[] = [
         name: "Skimaster",
         type: ProjectType.SCHOOL,
         date: "",
-        technologies: [java, spring_boot, angular],
-        path: "",
+        technologies: [java, spring_boot, mvn, angular],
+        path: "skimaster",
         category: ProjectCategory.DEV,
         project_ico: "/projects/skimaster/skimaster.png",
         main_picture: "",
-        overview_pictures: [],
-        description: "skimaster"
+        overview_pictures: [
+            "/projects/skimaster/skimaster.png",
+        ],
+        description: ""
     },
     {
         id: -1,
@@ -117,9 +123,18 @@ const project_list: Project[] = [
         date: "",
         project_ico: "/projects/nas-home-server/nas-home-server.png",
         overview_pictures: ["/projects/nas-home-server/nas-home-server.png"],
-        description: "",
+        description: "A personal project: a self-hosted NAS built from scratch around a Raspberry Pi.\n\n"
+            + "The hardware pairs two 6 TB NAS-grade drives in replication, for 6 TB of usable storage, with an NVMe M.2 SSD dedicated to running the services, so they stay fast and don't compete with the data drives.\n\n"
+            + "It runs on Raspberry Pi OS Lite, with Open Media Vault handling disk management. On top of the replication, dedicated backup protocols mean a failing drive doesn't mean lost data.\n\n"
+            + "Everything is deployed as containerized services with Docker, including a personal cloud, a Jellyfin media server and several others.\n\n"
+            + "On the security side, all traffic goes through a Cloudflare Tunnel, so no port is ever exposed on my home router.",
         main_picture: "",
-        technologies: [],
+        technologies: [
+            cloudflare,
+            raspberry_pi,
+            linux,
+            docker,
+        ],
         path: "nas-home-server"
     },
     {
@@ -128,12 +143,40 @@ const project_list: Project[] = [
         type: ProjectType.HOME,
         category: ProjectCategory.CYBER,
         date: "",
-        project_ico: "package.png",
-        overview_pictures: ["package.png"],
-        description: "",
+        project_ico: "icons/package.png",
+        overview_pictures: ["icons/package.png"],
+        description: "A personal project: a hardware pentesting tool built around an ESP32 Marauder, to explore offensive Wi-Fi and Bluetooth security hands-on.\n\n"
+            + "The build pairs an ESP32 dev board (Wi-Fi and Bluetooth) with an LCD screen for on-device control and feedback, assembled on a breadboard with jumper wires.\n\n"
+            + "It can run a range of Wi-Fi and Bluetooth attacks used in penetration testing, such as scanning and monitoring nearby networks and devices, deauthentication, and spoofing.\n\n"
+            + "The goal was to understand these attacks from the attacker's side, on my own equipment, in order to better recognize and defend against them.",
         main_picture: "",
-        technologies: [],
+        technologies: [
+            arduino
+        ],
         path: "esp32-marauder"
+    },
+    {
+        id: -1,
+        name: "Security Lab IoT & IAM",
+        type: ProjectType.HOME,
+        category: ProjectCategory.CYBER,
+        date: "",
+        project_ico: "icons/package.png",
+        overview_pictures: ["icons/package.png"],
+        description: "A self-built, isolated security lab exploring IoT and machine identity end to end, where every tool is coded from scratch rather than assembled from existing ones, to truly understand the logic behind them.\n\n"
+            + "The lab mixes real hardware: ESP32 devices acting as deliberately vulnerable objects (an unauthenticated MQTT sensor, a fake IP camera, a hardcoded-password actuator), an OpenWrt router for network segmentation, and a central Linux server running the broker, the monitoring and the identity services.\n\n"
+            + "On the offensive side, I build my own tooling in Rust: a port scanner and a raw-socket sniffer, a fuzzer, and a MITM on MQTT, plus firmware extraction and reverse engineering with Ghidra, all aimed only at my own isolated network.\n\n"
+            + "The flagship is a zero-trust identity system: a home-made Certificate Authority issuing one certificate per object, mutual TLS, a mini identity provider with short-lived tokens and per-object permissions, and automatic revocation triggered by a home-made IDS, with the CA root key kept offline.\n\n",
+        main_picture: "",
+        technologies: [
+            python,
+            rust,
+            cpp,
+            arduino,
+            docker,
+            linux
+        ],
+        path: "sec-lab-iot-iam"
     },
 ]
 

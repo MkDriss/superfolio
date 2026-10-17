@@ -188,6 +188,7 @@
 
 // pastille claire : les logos sombres restent visibles sur le verre
 .technology-ico {
+    position: relative; // référence pour la bulle
     display: flex;
     height: 3rem;
     padding: 0.4rem;
@@ -199,6 +200,59 @@
         display: block;
         width: auto;
         height: 100%;
+    }
+
+    // bulle avec le nom de la techno (lu dans l'attribut data-name)
+    &::after {
+        content: attr(data-name);
+        position: absolute;
+        bottom: calc(100% + 0.5rem);
+        left: 50%;
+        z-index: 3;
+        padding: 0.35rem 0.8rem;
+        pointer-events: none;
+        white-space: nowrap;
+
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+
+        background: rgba(15, 20, 30, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+        opacity: 0;
+        transform: translate(-50%, 4px);
+        transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    &:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 3px;
+    }
+
+    // navigation au clavier
+    &:focus-visible::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+// souris : la bulle apparaît au survol
+@media (hover: hover) {
+    .technology-ico:hover::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+// tactile : la bulle apparaît au toucher et disparaît quand on touche ailleurs
+@media (hover: none) {
+    .technology-ico:focus::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
     }
 }
 

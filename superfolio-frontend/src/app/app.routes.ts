@@ -17,11 +17,11 @@ export const routes: Routes = [
     { path: 'my-projects/snell', component: WorkInProgress },
     { path: 'my-projects/octave', component: WorkInProgress },
     { path: 'my-projects/sophiatech-eat', component: WorkInProgress },
-    { path: 'my-projects/skimaster', component: Skimaster },
+    { path: 'my-projects/skimaster', component: WorkInProgress },
     { path: 'my-projects/lets-go-biking', component: WorkInProgress },
-    { path: 'my-projects/skimaster', component: Skimaster },
     { path: 'my-projects/nas-home-server', component: WorkInProgress },
     { path: 'my-projects/esp32-marauder', component: WorkInProgress },
+    { path: 'my-projects/sec-lab-iot-iam', component: WorkInProgress },
     
     { path: '**', component: NotFound },
 ];

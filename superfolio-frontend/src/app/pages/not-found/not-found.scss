@@ -44,10 +44,10 @@
 }
 
 .title {
-    margin: 20rem;
+    margin: 18rem;
     font-family: "Archivo", sans-serif;
-    font-weight: 700;
-    font-size: 45px;
+    font-weight: 900;
+    font-size: 65px;
     color: white;
 }
 
@@ -101,5 +101,19 @@
 
     &:hover {
         transform: translateY(-5px);
+    }
+}
+
+
+@media (max-width:64em){
+    .not-found-content{
+        padding: 0;
+    }
+
+    .title {
+        margin: 0;
+        margin-top: 8em;
+        font-weight: 700;
+        font-size: 45px;
     }
 }
