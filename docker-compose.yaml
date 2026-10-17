@@ -1,0 +1,10 @@
+services:
+  superfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: superfolio-frontend:latest
+    container_name: superfolio
+    restart: unless-stopped
+    ports:
+      - "9652:80" # http://<ip-du-pi>:8080 ; adapte le port extérieur si besoin
