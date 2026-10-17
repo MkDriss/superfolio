@@ -1,0 +1,135 @@
+@use "sass:list";
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+}
+
+// ---------- Bannière ----------
+
+.banner-container {
+    position: relative; // référence pour les pièces positionnées en absolu
+    width: 100%;
+    overflow: hidden; // pas de scroll horizontal pendant l'arrivée des pièces
+}
+
+.banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    animation: banner-in 0.6s ease-out both;
+}
+
+// ---------- Pièces ----------
+
+$ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+.piece {
+    position: absolute;
+    width: clamp(1.5rem, 6vw, 5.5rem);
+    height: auto;
+    rotate: var(--rot, 0deg); // angle final (aussi utilisé sans animation)
+    animation: piece-in 0.9s $ease-out both;
+}
+
+// Réglages par pièce : c'est le seul endroit à modifier pour ajuster la composition.
+// (haut, gauche, côté d'arrivée, angle final, délai, balancement continu)
+// haut et gauche sont en % de la bannière.
+$pieces: (
+    "t-white": (14%, 6%, left, -15deg, 0.20s, true),
+    "s-white": (60%, 10%, left, 172deg, 0.30s, false),
+    "p-white": (32%, 18%, left, 12deg, 0.40s, false),
+    "k-white": (68%, 24%, left, -10deg, 0.50s, false),
+    "f-white": (12%, 30%, left, -20deg, 0.60s, true),
+    "t-black": (14%, 88%, right, 15deg, 0.20s, true),
+    "s-black": (60%, 84%, right, -8deg, 0.30s, false),
+    "p-black": (32%, 76%, right, -12deg, 0.40s, false),
+    "k-black": (68%, 70%, right, 10deg, 0.50s, false),
+    "f-black": (12%, 64%, right, 20deg, 0.60s, true),
+);
+
+@each $id, $config in $pieces {
+    $top: list.nth($config, 1);
+    $left: list.nth($config, 2);
+    $side: list.nth($config, 3);
+    $rot: list.nth($config, 4);
+    $delay: list.nth($config, 5);
+    $sway: list.nth($config, 6);
+
+    ##{$id} {
+        top: $top;
+        left: $left;
+        --rot: #{$rot};
+
+        // les blanches arrivent par la gauche, les noires par la droite,
+        // en tournant dans le sens opposé
+        @if $side ==left {
+            --from: -45vw;
+            --spin: -35deg;
+        }
+
+        @else {
+            --from: 45vw;
+            --spin: 35deg;
+        }
+
+        @if $sway {
+            // arrivée, puis léger balancement continu une fois en place
+            animation:
+                piece-in 0.9s $ease-out $delay both,
+                piece-sway 3.5s ease-in-out ($delay + 0.9s) infinite alternate;
+        }
+
+        @else {
+            animation-delay: $delay;
+        }
+    }
+}
+
+// ---------- Animations ----------
+
+@keyframes banner-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+// translate et rotate sont des propriétés séparées :
+// l'arrivée et le balancement peuvent ainsi s'enchaîner sans se gêner
+@keyframes piece-in {
+    from {
+        opacity: 0;
+        translate: var(--from) 0;
+        rotate: calc(var(--rot) + var(--spin));
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+        rotate: var(--rot);
+    }
+}
+
+// part de l'angle final de l'arrivée : aucun saut entre les deux animations
+@keyframes piece-sway {
+    from {
+        rotate: var(--rot);
+    }
+
+    to {
+        rotate: calc(var(--rot) + 6deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .banner,
+    .piece {
+        // !important : les règles par pièce (#t-white...) sont plus spécifiques que .piece
+        animation: none !important;
+    }
+}

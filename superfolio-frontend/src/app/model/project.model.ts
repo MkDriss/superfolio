@@ -9,7 +9,7 @@ export interface Project {
     path: string,
     category: ProjectCategory
     project_ico: string,
-    main_picture: string,
+    banner: string,
     overview_pictures: string[],
     description: string,
     mention?: Mention ,
