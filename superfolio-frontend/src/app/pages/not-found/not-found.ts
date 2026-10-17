@@ -11,8 +11,9 @@ export class NotFound {
   private readonly router: Router = inject(Router);
 
   public PICTURES:string[] = [
-    "/not-found-background.jpg",
-    "/not-found-dear.png"
+    "/wallpapers/landscape/not-found-background.jpg",
+    "/wallpapers/landscape/not-found-dear.png",
+    "/wallpapers/landscape/road-in-the-woods.png"
   ]
 
   public get random_idx():number{
