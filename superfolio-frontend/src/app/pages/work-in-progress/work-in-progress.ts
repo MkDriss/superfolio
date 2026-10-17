@@ -11,6 +11,13 @@ export class WorkInProgress {
 
   private readonly router: Router = inject(Router);
 
+  public random_idx:number = 0;
+
+  constructor(){
+    const min_length = Math.min(this.PICTURES_DESKTOP.length, this.PICTURES_MOBILE.length);
+    this.random_idx = Math.floor(Math.random() * min_length);    
+  }
+
   public PICTURES_DESKTOP = [
     "/wallpapers/landscape/bear.png",
     "/wallpapers/landscape/cow.jpg",
@@ -22,12 +29,10 @@ export class WorkInProgress {
     "/wallpapers/portrait/mobile-bear.png",
     "/wallpapers/portrait/mobile-cow.png",
     "/wallpapers/portrait/mobile-white-fox.png",
+    "/wallpapers/landscape/lion.png"
   ]
 
-  public get random_idx(): number {
-    const max = this.PICTURES_DESKTOP.length;
-    return Math.floor(Math.random() * max);
-  }
+
 
   home() {
     this.router.navigate(['/home']);
