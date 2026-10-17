@@ -26,7 +26,7 @@ COPY --from=build /app/dist/superfolio-frontend/browser /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 9652
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
     CMD wget -qO- http://localhost/ > /dev/null || exit 1
