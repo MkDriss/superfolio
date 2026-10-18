@@ -12,10 +12,10 @@ export interface Project {
     banner: string,
     overview_pictures: string[],
     description: string,
-    mention?: Mention ,
+    award?: Award ,
 }
 
-interface Mention {
+interface Award {
     content:string,
     place:number
 }

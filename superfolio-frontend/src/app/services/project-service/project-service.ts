@@ -35,8 +35,8 @@ export class ProjectService {
   }
 
     public get_mention_place(project:Project): string {
-    if (project.mention) {
-      switch (project.mention.place) {
+    if (project.award) {
+      switch (project.award.place) {
         case 1: return "🥇";
         case 2: return "🥈";
         case 3: return "🥉";

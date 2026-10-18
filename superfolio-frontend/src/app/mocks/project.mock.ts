@@ -6,7 +6,7 @@ export const SNELL = {
     name: "Snell",
     type: ProjectType.SCHOOL,
     category: ProjectCategory.DEV,
-    date: "",
+    date: "2026",
     project_ico: "/projects/snell/snell-logo-colored.png",
     overview_pictures: [
         "/projects/snell/pictures/home-page.png",
@@ -39,7 +39,7 @@ export const SNELL = {
     banner: "/projects/snell/banner.png",
     technologies: [node_js, java_script, html, css, docker, mongo_db],
     path: "snell",
-    mention: {
+    award: {
         content: "#1 place at the Fullstack Contest, 2026 edition 🥇",
         place: 1
     }
@@ -69,7 +69,7 @@ export const OCTAVE = {
     banner: "",
     technologies: [node_js, angular, type_script, java_script, docker, nginx],
     path: "octave",
-    mention: { content: "#1 place at the Fullstack Contest, 2025 edition 🥇", place: 1 }
+    award: { content: "#1 place at the Fullstack Contest, 2025 edition 🥇", place: 1 }
 }
 
 export const SOPHIATECH_EAT = {

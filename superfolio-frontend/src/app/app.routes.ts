@@ -14,7 +14,7 @@ export const routes: Routes = [
 
     { path: '', component: Home },
     { path: 'home', component: Home },
-    { path: 'my-projects/snell', component: WorkInProgress },
+    { path: 'my-projects/snell', component: Snell },
     { path: 'my-projects/octave', component: WorkInProgress },
     { path: 'my-projects/sophiatech-eat', component: WorkInProgress },
     { path: 'my-projects/skimaster', component: WorkInProgress },
