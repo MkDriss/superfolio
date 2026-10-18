@@ -1,0 +1,21 @@
+@if (pictures.length > 0) {
+<div class="gallery" [class.gallery--mobile]="mobile">
+
+    <!-- un bouton : l'image s'agrandit aussi au clavier -->
+    <button class="main-picture-btn" type="button" (click)="enlarge.emit(current_picture)"
+        [attr.aria-label]="'Enlarge: ' + current_picture.alt">
+        <img class="main-picture" [src]="current_picture.src" [alt]="current_picture.alt">
+    </button>
+
+    @if (pictures.length > 1) {
+    <div class="thumbs">
+        @for (picture of pictures; track picture.src; let i = $index) {
+        <button class="thumb" type="button" [class.thumb--active]="i === current_index"
+            [attr.aria-pressed]="i === current_index" (click)="current_index = i">
+            <img class="thumb-img" [src]="picture.src" [alt]="picture.alt" loading="lazy">
+        </button>
+        }
+    </div>
+    }
+</div>
+}

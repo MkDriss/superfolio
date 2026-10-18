@@ -135,9 +135,7 @@
                 page tells how.
             </p>
 
-            <div class="picture-v-layout">
-                <img src="projects/snell/pictures/home-page.png" class="project-plain-img" alt="home-page">
-            </div>
+            <app-project-gallery [pictures]="pictures.home" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">The Game</h2>
 
@@ -150,20 +148,20 @@
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/shooter_white.png" alt="">
                     <p class="piece-description">The Shooter, an indestructible piece that fires the laser at the end of
-                        every turn</p>
+                        every turn.</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/protector_white.png" alt="">
-                    <p class="piece-description">The Protector, shielded on one side only</p>
+                    <p class="piece-description">The Protector, shielded on one side only.</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/triangle_white.png" alt="">
-                    <p class="piece-description">The Triangles, whose single mirror redirects the beam</p>
+                    <p class="piece-description">The Triangles, whose single mirror redirects the beam.</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/full_mirror_white.png" alt="">
                     <p class="piece-description">The Full Mirror, which reflects on both sides and can never be
-                        destroyed
+                        destroyed.
                     </p>
                 </div>
                 <div class="piece-description-container">
@@ -172,7 +170,6 @@
                         game.</p>
                 </div>
             </div>
-
 
             <p class="project-p">
                 On each turn, a player performs exactly one action: rotate a piece, move it, place a Triangle from their
@@ -183,11 +180,7 @@
                 around the center of the board.
             </p>
 
-
-            <div class="picture-v-layout">
-                <img src="projects/snell/pictures/local-1vs1-page.png" class="project-plain-img" alt="home-page">
-            </div>
-
+            <app-project-gallery [pictures]="pictures.local_game" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <p class="project-p single-row">
                 For the look and feel, we picked a theme with a wink: Snell is a playful parody of chess.com, from its
@@ -216,9 +209,12 @@
                 right service.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/architecture.jpg" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+
+            <app-project-gallery [pictures]="pictures.architecture"
+                (enlarge)="open_picture($event)"></app-project-gallery>
 
             <p class="project-p">
                 This choice paid off week after week. When a new feature came in, it often meant adding a new service
@@ -233,10 +229,11 @@
                 step by step, while the board highlights the cells you need to interact with.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/tutorial.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/tutorial-hint.png" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.tutorial" (enlarge)="open_picture($event)"></app-project-gallery>
 
 
             <p class="project-p single-row">
@@ -244,11 +241,12 @@
                 stuck, to practice the kind of situations that decide real games.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/puzzles.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/puzzle-game.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/puzzle-game-hint.png" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.puzzles" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">Playing</h2>
 
@@ -258,12 +256,13 @@
                 choose their color: white, black or random, white always moving first, as in chess.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/ais-page.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/ai-game.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/ai-game-2.png" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
 
+            <app-project-gallery [pictures]="pictures.ai" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <p class="project-p">
                 Online, in real time. Multiplayer games are synchronized in real time through Socket.IO, and every move
@@ -274,10 +273,12 @@
                 more the underdog stands to win, and the favorite to lose.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/multiplayer-wait.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/multiplayer-game.png" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.multiplayer"
+                (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">Inside the AI</h2>
 
@@ -337,9 +338,10 @@
                 a single byte, the whole board in 100 bytes, and the search creates no new objects along the way.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/bits-repartition.jpg" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.engine" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-subtitle">VII. A ladder of opponents</h2>
             <p class="project-p">
@@ -363,9 +365,10 @@
                 exact move where a game turned.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/review-game.png" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.review" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">Playing together</h2>
 
@@ -387,11 +390,12 @@
                 exercise.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/profile-page.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/inventory-page.png" class="project-plain-img" alt="home-page">
-
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.progression"
+                (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">Accounts and security</h2>
 
@@ -405,10 +409,11 @@
                 anyone's password. Needless to say, this one is a joke, not a security feature.
             </p>
 
-            <div class="picture-v-layout">
+            <!-- <div class="picture-v-layout">
                 <img src="projects/snell/pictures/honesty-quiz.png" class="project-plain-img" alt="home-page">
                 <img src="projects/snell/pictures/honesty-quiz-2.png" class="project-plain-img" alt="home-page">
-            </div>
+            </div> -->
+            <app-project-gallery [pictures]="pictures.honesty" (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">On Android</h2>
 
@@ -419,18 +424,8 @@
                 when you receive a friend request or a challenge request.
             </p>
 
-            <div class="picture-v-layout-mobile">
-                <img src="projects/snell/pictures/mobile-home-page.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-login.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-shop.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-ais.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-ai-game.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-friends.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-puzzles.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-puzzle-game.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-tutorial.png" class="project-mobile-img" alt="home-page">
-                <img src="projects/snell/pictures/mobile-profile.png" class="project-mobile-img" alt="home-page">
-            </div>
+            <app-project-gallery [pictures]="pictures.mobile" mobile
+                (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">Running it for real</h2>
 
@@ -440,9 +435,8 @@
                 state of each container, and so of each service, and the CPU and memory usage of the host machine.
             </p>
 
-            <div class="picture-v-layout">
-                <img src="projects/snell/pictures/monitoring.png" class="project-plain-img" alt="home-page">
-            </div>
+            <app-project-gallery [pictures]="pictures.monitoring"
+                (enlarge)="open_picture($event)"></app-project-gallery>
 
 
             <p class="project-p">
@@ -461,9 +455,8 @@
                 in through a Cloudflare Tunnel, so no port is ever opened on my home network.
             </p>
 
-            <div class="picture-v-layout">
-                <img src="projects/snell/pictures/snell-cloudflare-archi.jpg" class="project-plain-img" alt="home-page">
-            </div>
+            <app-project-gallery [pictures]="pictures.deployment"
+                (enlarge)="open_picture($event)"></app-project-gallery>
 
             <h2 class="project-p-title">The Fullstack Contest</h2>
 
@@ -552,4 +545,8 @@
         <app-project-pop-up [project]="selected_project!" (close)="close_project_pop_up()"></app-project-pop-up>
     </div>
 </div>
+}
+
+@if (selected_picture) {
+<app-picture-lightbox [picture]="selected_picture" (close)="close_picture()"></app-picture-lightbox>
 }
