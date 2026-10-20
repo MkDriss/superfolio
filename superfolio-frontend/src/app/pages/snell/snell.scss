@@ -6,6 +6,8 @@
     flex-direction: column;
     align-items: center; // centre la colonne de contenu sous la bannière
     padding-bottom: 10em;
+
+    --defautl-background: #232220
 }
 
 // ---------- Bannière ----------
@@ -16,6 +18,8 @@
     overflow: hidden; // pas de scroll horizontal pendant l'arrivée des pièces
     background-color: #232220; // visible le temps que l'image se charge
     user-select: none;
+
+    
 }
 
 .banner {
@@ -537,11 +541,13 @@ app-project-pop-up {
 }
 
 
-a {
-    color: white;
-    text-decoration: underline;
+.header-link {
     display: flex;
     align-items: center;
+    color: white;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
     gap: 0.5rem;
 }
 

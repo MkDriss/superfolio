@@ -27,7 +27,6 @@ export const SNELL = {
         "/projects/snell/pictures/history-page.png",
         "/projects/snell/pictures/inventory-page.png",
         "/projects/snell/pictures/review-game.png",
-        "/projects/snell/pictures/snell_home_page.png",
     ],
     description: "Snell is a school project built in a team of two: a multiplayer web reimagination of Khet, the laser board game, where players move and rotate mirrored pieces, fire lasers and try to take down the opponent’s king.\n\n"
         + "The platform runs on a microservice architecture behind an API gateway, using Node.js with our own lightweight HTTP framework (built from scratch instead of relying on Express), Socket.IO for real-time play, MongoDB and Docker Compose.\n\n"
@@ -104,6 +103,8 @@ export const OCTAVE = {
         "projects/octave/pictures/add-patient.png",
         "projects/octave/pictures/patient-edit.png",
         "projects/octave/pictures/patient-config.png",
+
+        
     ],
     description: "Built in a team of four with a user-experience-first approach, this is a game platform adapted for people living with Alzheimer's disease.\n\n"
         + "At its heart is a music quiz: every question comes with a song, and every quiz is fully customizable, from the questions and answers to the music that accompanies them.\n\n"

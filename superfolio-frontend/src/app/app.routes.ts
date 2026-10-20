@@ -15,7 +15,7 @@ export const routes: Routes = [
     { path: '', component: Home },
     { path: 'home', component: Home },
     { path: 'my-projects/snell', component: Snell },
-    { path: 'my-projects/octave', component: WorkInProgress },
+    { path: 'my-projects/octave', component: Octave },
     { path: 'my-projects/sophiatech-eat', component: WorkInProgress },
     { path: 'my-projects/skimaster', component: WorkInProgress },
     { path: 'my-projects/lets-go-biking', component: WorkInProgress },

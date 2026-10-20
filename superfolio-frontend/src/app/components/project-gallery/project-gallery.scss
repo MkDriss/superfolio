@@ -36,8 +36,8 @@
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
-    object-fit: cover;
-    background: black;
+    object-fit: contain;
+    background: var(--defautl-background, white);
     border: 1px solid var(--gallery-border, rgba(255, 255, 255, 0.25));
     border-radius: 16px;
 }
@@ -83,7 +83,7 @@
     height: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    background: black;
+    // background: black;
 }
 
 // survol réservé à la souris : sur tactile il resterait collé après le toucher
