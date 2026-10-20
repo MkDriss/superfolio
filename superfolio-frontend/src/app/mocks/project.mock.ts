@@ -50,16 +50,60 @@ export const OCTAVE = {
     name: "Octave",
     type: ProjectType.SCHOOL,
     category: ProjectCategory.DEV,
-    date: "",
+    date: "2025",
     project_ico: "/projects/octave/octave.png",
     overview_pictures: [
-        "/projects/octave/pictures/home-page.png",
-        "/projects/octave/pictures/admin-code-request.png",
-        "/projects/octave/pictures/panel-page.png",
-        "/projects/octave/pictures/accueillis-page.png",
-        "/projects/octave/pictures/accueillis-edit-page.png",
-        "/projects/octave/pictures/quiz-list-page.png",
-        "/projects/octave/pictures/quiz-creation-interface.png",
+        "projects/octave/pictures/home-page.png",
+        "projects/octave/pictures/game-selection.png",
+        "projects/octave/pictures/solo-quiz-selection.png",
+
+        "projects/octave/pictures/solo-game.png",
+        "projects/octave/pictures/game-solo-answer-removed.png",
+        "projects/octave/pictures/game-solo-rappel.png",
+        "projects/octave/pictures/game-solo-good-answer.png",
+        "projects/octave/pictures/game-solo-congrats.png",
+
+        "projects/octave/pictures/leave-quiz-code-request.png",
+
+        "projects/octave/pictures/admin-panel-code.png",
+        "projects/octave/pictures/panel-page.png",
+
+        "projects/octave/pictures/admin-quiz-list.png",
+        "projects/octave/pictures/admin-quiz-create.png",
+        "projects/octave/pictures/admin-quiz-edit.png.png",
+
+        "projects/octave/pictures/multiplayer-lobby.png",
+        "projects/octave/pictures/players-in-the-room.png",
+        "projects/octave/pictures/join-multiplayer-page.png",
+
+        "projects/octave/pictures/multiplayer-game.png",
+        "projects/octave/pictures/multiplayer-failed.png",
+        "projects/octave/pictures/multiplayer-game-right.png",
+
+        "projects/octave/pictures/multiplayer-game-hints.png",
+
+        "projects/octave/pictures/multiquiz-end.png",
+        "projects/octave/pictures/replay-1.png",
+        "projects/octave/pictures/multiplayer-game-leaderboard.png",
+
+        "projects/octave/pictures/tutorial-1.png",
+        "projects/octave/pictures/tutorial-2.png",
+        "projects/octave/pictures/tutorial-3.png",
+        "projects/octave/pictures/tutorial-4.png",
+        "projects/octave/pictures/tutorial-5.png",
+
+        "projects/octave/pictures/patient-stas.png",
+        "projects/octave/pictures/patient-evolution-stats.png",
+        "projects/octave/pictures/patient-quiz-history.png",
+        "projects/octave/pictures/quiz-stats-page.png",
+
+        "projects/octave/pictures/multiplayer-session-stats.png",
+        "projects/octave/pictures/multiplayer-leader-board.png",
+
+        "projects/octave/pictures/patient-list.png",
+        "projects/octave/pictures/add-patient.png",
+        "projects/octave/pictures/patient-edit.png",
+        "projects/octave/pictures/patient-config.png",
     ],
     description: "Built in a team of four with a user-experience-first approach, this is a game platform adapted for people living with Alzheimer's disease.\n\n"
         + "At its heart is a music quiz: every question comes with a song, and every quiz is fully customizable, from the questions and answers to the music that accompanies them.\n\n"

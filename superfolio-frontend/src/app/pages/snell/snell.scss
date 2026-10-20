@@ -74,33 +74,34 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 // (haut, gauche, côté d'arrivée, angle final, délai, balancement continu)
 // haut et gauche sont en % de la bannière.
 $pieces: (
-    "t-white": (14%, 6%, left, -15deg, 0.20s, true),
-    "s-white": (60%, 10%, left, 6deg, 0.30s, false),
-    "p-white": (32%, 18%, left, 12deg, 0.40s, false),
-    "k-white": (68%, 24%, left, 8deg, 0.50s, false),
-    "f-white": (12%, 30%, left, -20deg, 0.60s, true),
-    "t-black": (14%, 88%, right, 15deg, 0.20s, true),
-    "s-black": (60%, 84%, right, -8deg, 0.30s, false),
-    "p-black": (32%, 76%, right, -12deg, 0.40s, false),
-    "k-black": (68%, 70%, right, -12deg, 0.50s, false),
-    "f-black": (12%, 64%, right, 20deg, 0.60s, true),
+    "t-white": (14%, 6%, 6%, left, -15deg, 0.20s, true),
+    "s-white": (60%, 10%, 10%, left, 6deg, 0.30s, false),
+    "p-white": (32%, 18%, 18%, left, 12deg, 0.40s, false),
+    "k-white": (68%, 24%, 24%, left, 8deg, 0.50s, false),
+    "f-white": (12%, 30%, 21%, left, -20deg, 0.60s, true),
+    "t-black": (14%, 88%, 88%, right, 15deg, 0.20s, true),
+    "s-black": (60%, 84%, 84%, right, -8deg, 0.30s, false),
+    "p-black": (32%, 76%, 76%, right, -12deg, 0.40s, false),
+    "k-black": (68%, 70%, 70%, right, -12deg, 0.50s, false),
+    "f-black": (12%, 64%, 64%, right, 20deg, 0.60s, true),
 );
 
 // Pièces masquées sur mobile, pour ne pas surcharger une bannière plus petite
 $hidden-on-mobile: (
-    "s-white",
+    // "s-white",
     "p-white",
-    "s-black",
+    // "s-black",
     "p-black"
 );
 
 @each $id, $config in $pieces {
     $top: list.nth($config, 1);
     $left: list.nth($config, 2);
-    $side: list.nth($config, 3);
-    $rot: list.nth($config, 4);
-    $delay: list.nth($config, 5);
-    $sway: list.nth($config, 6);
+    $left-mobile: list.nth($config, 3);
+    $side: list.nth($config, 4);
+    $rot: list.nth($config, 5);
+    $delay: list.nth($config, 6);
+    $sway: list.nth($config, 7);
 
     ##{$id} {
         top: $top;
@@ -128,6 +129,10 @@ $hidden-on-mobile: (
 
         @else {
             animation-delay: $delay;
+        }
+
+        @media (max-width:64em) {
+            left: $left-mobile;
         }
     }
 }
@@ -158,8 +163,10 @@ $hidden-on-mobile: (
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     line-height: 1.1;
-    text-decoration: underline;
     color: white;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
 }
 
 .project-p-subtitle {
@@ -733,6 +740,11 @@ a {
             width: 1rem;
             height: 1rem;
         }
+    }
+
+    .next-btn-container {
+        left: 1rem;
+        top: 1rem;
     }
 
     .piece-description-container {

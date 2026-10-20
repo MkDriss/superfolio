@@ -3,6 +3,11 @@
     margin: 2rem 0;
 }
 
+// Couleurs réglables par la page qui utilise la galerie :
+//   --gallery-accent    contour de la miniature active et du focus (blanc par défaut, pour Snell)
+//   --gallery-border    bordure de l'image principale
+//   --gallery-scrollbar barre de défilement des miniatures
+
 .gallery {
     display: flex;
     flex-direction: column;
@@ -22,7 +27,7 @@
     border-radius: 16px;
 
     &:focus-visible {
-        outline: 2px solid white;
+        outline: 2px solid var(--gallery-accent, white);
         outline-offset: 3px;
     }
 }
@@ -30,9 +35,10 @@
 .main-picture {
     display: block;
     width: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     background: black;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid var(--gallery-border, rgba(255, 255, 255, 0.25));
     border-radius: 16px;
 }
 
@@ -46,7 +52,7 @@
     max-height: 15rem;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+    scrollbar-color: var(--gallery-scrollbar, rgba(255, 255, 255, 0.4)) transparent;
 }
 
 .thumb {
@@ -63,11 +69,11 @@
 
     &--active {
         opacity: 1;
-        border-color: white;
+        border-color: var(--gallery-accent, white);
     }
 
     &:focus-visible {
-        outline: 2px solid white;
+        outline: 2px solid var(--gallery-accent, white);
         outline-offset: 3px;
     }
 }

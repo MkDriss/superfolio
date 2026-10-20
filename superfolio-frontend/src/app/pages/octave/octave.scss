@@ -1,20 +1,42 @@
 @use "sass:list";
 
+// ---------- Palette Octave ----------
+
+$blue: #0398fd; // bleu principal : bannière, titres, grands éléments
+$blue-dark: #0073c0; // bleu secondaire : liens, boutons, petits textes (meilleur contraste)
+$background: #fefefe;
+$text: #000;
+$text-muted: rgba(0, 0, 0, 0.6);
+$selected-bg: #e7f1ff;
+$selected-border: #007bff;
+$unselected-bg: #fafafa;
+$unselected-border: #ddd;
+
 .project-container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center; // centre la colonne de contenu sous la bannière
-    padding-bottom: 10em;
+    // padding-bottom: 10em;
+
+    background-color: $background;
+    background-image: url("/projects/octave/pictures/octave-bg.png");
+    background-repeat: repeat;
+    background-size: 400px auto; // taille d'une tuile du quadrillage
+
+    // couleurs transmises à la galerie d'images (composant partagé avec Snell)
+    --gallery-accent: #{$selected-border};
+    --gallery-border: #{$unselected-border};
+    --gallery-scrollbar: rgba(0, 0, 0, 0.25);
 }
 
 // ---------- Bannière ----------
 
 .banner-container {
-    position: relative; // référence pour le voile et les pièces
+    position: relative; // référence pour le voile et les éléments animés
     width: 100%;
-    overflow: hidden; // pas de scroll horizontal pendant l'arrivée des pièces
-    background-color: #232220; // visible le temps que l'image se charge
+    overflow: hidden; // pas de scroll horizontal pendant les animations
+    background-color: $blue; // visible le temps que l'image se charge
     user-select: none;
 }
 
@@ -31,33 +53,30 @@
     animation: banner-in 0.6s ease-out both;
 }
 
-// ---------- Voile sombre qui monte depuis le bas ----------
+// ---------- Voile qui fonce le bas de la bannière ----------
 
 .banner-scrim {
     position: absolute;
     inset: -4px; // dépasse un peu : évite le liseré de 1px sur iPhone
-    z-index: 1; // au-dessus de la bannière, sous les pièces
+    z-index: 1; // au-dessus de la bannière, sous les éléments animés
     pointer-events: none;
 
-    // assombrit : sombre en bas, transparent en remontant
+    // fonce vers le bleu secondaire en bas, transparent en remontant
     background: linear-gradient(to top,
-            rgba(35, 34, 32, 0.35) 0%,
-            rgba(35, 34, 32, 0.10) 15%,
+            rgba(0, 115, 192, 0.35) 0%,
+            rgba(0, 115, 192, 0.10) 15%,
             transparent 90%);
 
-    // -webkit-backdrop-filter: blur(16px);
-    // backdrop-filter: blur(16px);
-
-
-    // le voile s'estompe en remontant
+    // le voile s'estompe en remontant (seule l'opacité du masque compte, pas sa couleur)
     -webkit-mask-image: linear-gradient(to top, black 0%, black 10%, transparent 75%);
-    mask-image: linear-gradient(to top, black 0%, #232220 10%, transparent 75%);
+    mask-image: linear-gradient(to top, black 0%, black 10%, transparent 75%);
 
-    // apparaît avec la bannière : pas de dégradé sombre sur un fond vide au chargement
+    // apparaît avec la bannière : pas de dégradé sur un fond vide au chargement
     animation: banner-in 0.6s ease-out both;
 }
 
-// ---------- Pièces ----------
+// ---------- Éléments animés de la bannière ----------
+// Même mécanique que les pièces de Snell : remplace les ids de la table par ceux de tes notes.
 
 $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
@@ -70,7 +89,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
     animation: piece-in 0.9s $ease-out both;
 }
 
-// Réglages par pièce : les mêmes positions sur ordinateur et sur mobile.
+// Réglages par élément : les mêmes positions sur ordinateur et sur mobile.
 // (haut, gauche, côté d'arrivée, angle final, délai, balancement continu)
 // haut et gauche sont en % de la bannière.
 $pieces: (
@@ -86,7 +105,7 @@ $pieces: (
     "f-black": (12%, 64%, right, 20deg, 0.60s, true),
 );
 
-// Pièces masquées sur mobile, pour ne pas surcharger une bannière plus petite
+// Éléments masqués sur mobile, pour ne pas surcharger une bannière plus petite
 $hidden-on-mobile: (
     "s-white",
     "p-white",
@@ -107,8 +126,6 @@ $hidden-on-mobile: (
         left: $left;
         --rot: #{$rot};
 
-        // les blanches arrivent par la gauche, les noires par la droite,
-        // en pivotant dans le sens opposé
         @if $side ==left {
             --from: -45vw;
             --spin: -150deg;
@@ -120,7 +137,6 @@ $hidden-on-mobile: (
         }
 
         @if $sway {
-            // arrivée, puis léger balancement continu une fois en place
             animation:
                 piece-in 0.9s $ease-out $delay both,
                 piece-sway 3.5s ease-in-out ($delay + 0.9s) infinite alternate;
@@ -140,7 +156,7 @@ $hidden-on-mobile: (
     font-size: clamp(2rem, 5vw, 3.25rem);
     font-weight: 700;
     line-height: 1.1;
-    color: white;
+    color: $text;
 }
 
 .project-date {
@@ -149,17 +165,20 @@ $hidden-on-mobile: (
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     line-height: 1.1;
-    color: white;
+    color: $text;
 }
 
+// titres de section soulignés en bleu, comme « Général » et « Questions » dans l'application
 .project-p-title {
     margin: 3.5rem 0 1.75rem;
     font-family: "Archivo", sans-serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     line-height: 1.1;
+    color: $blue;
     text-decoration: underline;
-    color: white;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
 }
 
 .project-p-subtitle {
@@ -168,13 +187,13 @@ $hidden-on-mobile: (
     font-size: clamp(1rem, 2vw, 1.2rem);
     font-weight: 700;
     line-height: 1.1;
-    color: white;
+    color: $blue-dark;
 }
 
 .project-header {
-    width: 100%; // remplit la colonne de 80%
-    color: white;
-    border-bottom: 2px solid white;
+    width: 100%;
+    color: $text;
+    border-bottom: 2px solid $unselected-border; // le blanc était invisible sur le fond blanc
     padding-bottom: 2rem;
     margin-bottom: 2.5rem;
 }
@@ -186,12 +205,17 @@ $hidden-on-mobile: (
 }
 
 .project-content {
+    max-width: 75.5rem;
+    padding: 2.5rem 3rem 13rem 2.5rem;
+    background: $background;
+    border: 1px solid $unselected-border;
+    // border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 115, 192, 0.08);
     animation: fade-in 0.6s ease-out 0.3s both;
-    max-width: 70rem;
 }
 
 .project-p {
-    color: white;
+    color: $text;
     text-align: justify;
     font-family: "Roboto", sans-serif;
     font-size: clamp(1.2rem, 2vw, 1.2rem);
@@ -211,7 +235,7 @@ $hidden-on-mobile: (
 
 .link {
     position: relative;
-    color: white;
+    color: $blue-dark;
     cursor: pointer;
     text-decoration: none;
     font-size: 20px;
@@ -242,7 +266,6 @@ $hidden-on-mobile: (
     }
 }
 
-
 .projects-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -257,10 +280,9 @@ $hidden-on-mobile: (
     font-family: "Roboto Condensed", sans-serif;
     font-size: 22px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    color: $text-muted; // le blanc était invisible sur le fond blanc
     text-align: center;
 }
-
 
 .backdrop {
     position: fixed;
@@ -288,7 +310,6 @@ app-project-pop-up {
 
 // ---------- Panneau de filtres ----------
 
-// overlay sombre derrière le tiroir : un clic dessus le ferme
 .filter-backdrop {
     position: fixed;
     inset: 0;
@@ -297,16 +318,6 @@ app-project-pop-up {
 }
 
 // ---------- Animations ----------
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 
 @keyframes fade-out {
     from {
@@ -358,8 +369,6 @@ app-project-pop-up {
     animation: slide-out 200ms ease-in forwards;
 }
 
-
-
 // ---------- Mobile ----------
 
 @media (max-width: 40em) {
@@ -367,7 +376,7 @@ app-project-pop-up {
     // 70% serait trop étroit sur téléphone
     .project-content {
         width: 100%;
-        padding: 0 1.25rem;
+        padding: 0 1.25rem 5rem 2rem;
         box-sizing: border-box;
     }
 
@@ -385,7 +394,7 @@ app-project-pop-up {
         border-radius: 0px;
     }
 
-    // même bannière horizontale, seules les pièces rétrécissent
+    // même bannière horizontale, seuls les éléments animés rétrécissent
     .piece {
         width: clamp(1.75rem, 9vw, 2.5rem);
     }
@@ -454,12 +463,12 @@ app-project-pop-up {
     .banner-scrim,
     .piece,
     .project-title {
-        // !important : les règles par pièce (#t-white...) sont plus spécifiques que .piece
+        // !important : les règles par élément (#t-white...) sont plus spécifiques que .piece
         animation: none !important;
     }
 }
 
-
+// ---------- Bouton retour ----------
 
 .next-btn-container {
     position: absolute;
@@ -468,6 +477,7 @@ app-project-pop-up {
     z-index: 3;
 }
 
+// bleu secondaire plein : lisible sur la bannière bleue comme sur le fond blanc
 .button {
     display: flex;
     align-items: center;
@@ -479,19 +489,12 @@ app-project-pop-up {
     font-size: 20px;
     font-weight: 700;
     color: white;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 
-    // verre sombre : lisible sur sable, t-shirt blanc ou ciel
-    background: rgba(15, 20, 30, 0.45);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    backdrop-filter: blur(14px) saturate(140%);
+    background: $blue-dark;
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.35),
-        0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 115, 192, 0.3);
 
     transition: transform 0.2s ease-out;
 
@@ -502,14 +505,12 @@ app-project-pop-up {
     }
 
     &:focus-visible {
-        outline: 2px solid white;
+        outline: 2px solid $selected-border;
         outline-offset: 3px;
     }
-
-    &:hover {
-        transform: translateY(-5px);
-    }
 }
+
+// ---------- En-tête : métadonnées ----------
 
 .meta {
     display: flex;
@@ -526,9 +527,8 @@ app-project-pop-up {
     gap: 0.8rem;
 }
 
-
 a {
-    color: white;
+    color: $blue-dark;
     text-decoration: underline;
     display: flex;
     align-items: center;
@@ -556,20 +556,19 @@ a {
 
 .meta dt {
     min-width: 6rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: $text-muted; // libellé plus discret que sa valeur
 }
 
 .meta dd {
     margin: 0;
 }
 
-
 .section-label {
     margin: 0 0 0.6rem;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
+    color: $text-muted;
 }
 
 .technologies-list {
@@ -590,14 +589,16 @@ a {
     overflow-x: auto;
 }
 
-// pastille claire : les logos sombres restent visibles sur le verre
+// pastille comme un élément « non sélectionné » de l'application, « sélectionné » au survol
 .technology-ico {
     position: relative; // référence pour la bulle
     display: flex;
     height: 3rem;
     padding: 0.4rem;
-    background: rgba(255, 255, 255, 0.92);
+    // background: $unselected-bg;
+    border: 1px solid $unselected-border;
     border-radius: 12px;
+    // transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
 
     // le SVG vient d'un [innerHTML] : il faut ::ng-deep pour le styler
     ::ng-deep svg {
@@ -622,10 +623,9 @@ a {
         font-weight: 600;
         color: white;
 
-        background: rgba(15, 20, 30, 0.92);
-        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: $blue-dark;
         border-radius: 10px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 24px rgba(0, 115, 192, 0.25);
 
         opacity: 0;
         transform: translate(-50%, 4px);
@@ -633,7 +633,7 @@ a {
     }
 
     &:focus-visible {
-        outline: 2px solid white;
+        outline: 2px solid $selected-border;
         outline-offset: 3px;
     }
 
@@ -644,11 +644,18 @@ a {
     }
 }
 
+// ---------- Survol (souris uniquement) ----------
 
-
-
-// souris : la bulle apparaît au survol
 @media (hover: hover) {
+    .button:hover {
+        transform: translateY(-5px);
+    }
+
+    .technology-ico:hover {
+        background: $selected-bg;
+        border-color: $selected-border;
+    }
+
     .technology-ico:hover::after {
         opacity: 1;
         transform: translate(-50%, 0);
@@ -662,7 +669,6 @@ a {
         transform: translate(-50%, 0);
     }
 }
-
 
 @media (max-width:64em) {
     .home-btn-label {
@@ -684,5 +690,10 @@ a {
 
     .github-mobile {
         display: block;
+    }
+
+    .next-btn-container {
+        left: 1rem;
+        top: 1rem;
     }
 }
