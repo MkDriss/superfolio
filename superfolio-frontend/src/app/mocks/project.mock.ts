@@ -69,7 +69,7 @@ export const OCTAVE = {
 
         "projects/octave/pictures/admin-quiz-list.png",
         "projects/octave/pictures/admin-quiz-create.png",
-        "projects/octave/pictures/admin-quiz-edit.png.png",
+        "projects/octave/pictures/admin-quiz-edit.png",
 
         "projects/octave/pictures/multiplayer-lobby.png",
         "projects/octave/pictures/players-in-the-room.png",
@@ -91,7 +91,7 @@ export const OCTAVE = {
         "projects/octave/pictures/tutorial-4.png",
         "projects/octave/pictures/tutorial-5.png",
 
-        "projects/octave/pictures/patient-stas.png",
+        "projects/octave/pictures/patient-stats.png",
         "projects/octave/pictures/patient-evolution-stats.png",
         "projects/octave/pictures/patient-quiz-history.png",
         "projects/octave/pictures/quiz-stats-page.png",
