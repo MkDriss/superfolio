@@ -1,14 +1,9 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
-import { Snell } from './pages/snell/snell';
-import { Octave } from './pages/octave/octave';
-import { SophiatechEat } from './pages/sophiatech-eat/sophiatech-eat';
-import { Skimaster } from './pages/skimaster/skimaster';
-import { LetsGoBiking } from './pages/lets-go-biking/lets-go-biking';
-import { NasHomeServer } from './pages/nas-home-server/nas-home-server';
-import { Esp32Marauder } from './pages/esp32-marauder/esp32-marauder';
 import { WorkInProgress } from './pages/work-in-progress/work-in-progress';
 import { NotFound } from './pages/not-found/not-found';
+import { Octave } from './projects/octave/octave';
+import { Snell } from './projects/snell/snell';
 
 export const routes: Routes = [
 
