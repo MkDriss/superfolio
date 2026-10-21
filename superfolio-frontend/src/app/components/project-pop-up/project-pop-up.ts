@@ -1,9 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, EventEmitter, HostListener, inject, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Project } from '../../model/project.model';
+import { Component, computed, EventEmitter, HostListener, inject, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Project, PROJECT_CATEGORY_LABELS, PROJECT_TYPE_LABELS } from '../../model/project.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../services/project-service/project-service';
+import { LanguageService } from '../../services/language-service/language';
+import { Localized } from '../../model/localized.model';
+import { PROJECT_POP_UP_TEXTS } from './project-pop-up.text';
 
 @Component({
   selector: 'app-project-pop-up',
@@ -12,7 +15,13 @@ import { ProjectService } from '../../services/project-service/project-service';
   styleUrl: './project-pop-up.scss',
 })
 export class ProjectPopUp implements OnInit, OnDestroy {
-  private readonly projectService: ProjectService = inject(ProjectService)
+  private readonly projectService: ProjectService = inject(ProjectService);
+  public readonly language: LanguageService = inject(LanguageService);
+
+  public readonly texts = computed(() => PROJECT_POP_UP_TEXTS[this.language.lang()]);
+
+  public readonly PROJECT_CATEGORY_LABELS = PROJECT_CATEGORY_LABELS;
+  public readonly PROJECT_TYPE_LABELS = PROJECT_TYPE_LABELS;
 
   @Input()
   project!: Project;
@@ -26,6 +35,11 @@ export class ProjectPopUp implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     @Inject(DOCUMENT) private document: Document,
   ) { }
+
+  see_more: Localized = {
+    en: 'See more',
+    fr: 'Voir plus'
+  }
 
   current_picture_index: number = 0;
 
@@ -49,7 +63,7 @@ export class ProjectPopUp implements OnInit, OnDestroy {
   public on_escape(): void {
     this.trigger_close();
   }
-  
+
   @HostListener('document:keydown.ArrowRight')
   public right_image(): void {
     if (this.current_picture_index + 1 < this.project.overview_pictures.length) this.current_picture_index += 1;

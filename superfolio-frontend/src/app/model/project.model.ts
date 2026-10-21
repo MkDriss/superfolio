@@ -1,3 +1,4 @@
+import { Localized } from "./localized.model"
 import { Technology } from "./technology.model"
 
 export interface Project {
@@ -11,13 +12,13 @@ export interface Project {
     project_ico: string,
     banner: string,
     overview_pictures: string[],
-    description: string,
-    award?: Award ,
+    description: Localized,
+    award?: Award,
 }
 
 interface Award {
-    content:string,
-    place:number
+    content: Localized,
+    place: number
 }
 
 export const enum ProjectCategory {
@@ -29,3 +30,13 @@ export const enum ProjectType {
     SCHOOL = "School Project",
     HOME = "Personal Project"
 }
+
+export const PROJECT_CATEGORY_LABELS: Record<ProjectCategory, Localized> = {
+    [ProjectCategory.DEV]: { en: `Software development`, fr: `Développement logiciel` },
+    [ProjectCategory.CYBER]: { en: `Cybersecurity`, fr: `Cybersécurité` },
+};
+
+export const PROJECT_TYPE_LABELS: Record<ProjectType, Localized> = {
+    [ProjectType.SCHOOL]: { en: `School project`, fr: `Projet scolaire` },
+    [ProjectType.HOME]: { en: `Personal project`, fr: `Projet personnel` },
+};

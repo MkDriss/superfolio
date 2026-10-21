@@ -1,3 +1,5 @@
+@let t = texts();
+
 <div class="popup">
     <button class="close-btn" type="button" (click)="trigger_close()" aria-label="Close project overview">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -27,24 +29,24 @@
             <h2 class="project-title">{{project.name}}</h2>
 
             <dl class="meta">
-                @if (project.award && project.award.content !== "") {
+                @if (project.award && language.pick(project.award.content) !== "") {
                 <div class="meta-row">
-                    <dt>Awards</dt>
-                    <dd>{{project.award.content}}</dd>
+                    <dt>{{t.awards}}</dt>
+                    <dd>{{language.pick(project.award.content)}}</dd>
                 </div>
                 }
                 <div class="meta-row">
-                    <dt>Category</dt>
-                    <dd>{{project.category}}</dd>
+                    <dt>{{t.category}}</dt>
+                    <dd>{{this.language.pick(PROJECT_CATEGORY_LABELS[project.category])}}</dd>
                 </div>
                 <div class="meta-row">
-                    <dt>Type</dt>
-                    <dd>{{project.type}}</dd>
+                    <dt>{{t.type}}</dt>
+                    <dd>{{this.language.pick(PROJECT_TYPE_LABELS[project.type])}}</dd>
                 </div>
             </dl>
 
             <div class="technologies">
-                <h3 class="section-label">Technologies</h3>
+                <h3 class="section-label">{{t.technologies}}</h3>
                 <div class="technologies-list">
                     @for (project_technologie of project.technologies; track project_technologie.id) {
                     <span class="technology-ico" role="img" tabindex="0" [attr.data-name]="project_technologie.name"
@@ -54,19 +56,19 @@
                 </div>
             </div>
 
-
-            @if(project.description && project.description !== ""){
+            @if(project.description && language.pick(project.description) !== ""){
             <div class="description">
-                <h3 class="section-label">Description</h3>
+                <h3 class="section-label">{{t.description}}</h3>
                 <p class="project-description">
-                    {{project.description}}
+                    {{language.pick(project.description)}}
                 </p>
             </div>
             }
 
 
             <div class="button-section">
-                <button class="learn-more-btn" type="button" (click)="navigate_to(project.path)">See more</button>
+                <button class="learn-more-btn" type="button"
+                    (click)="navigate_to(project.path)">{{language.pick(see_more)}}</button>
             </div>
         </section>
     </div>

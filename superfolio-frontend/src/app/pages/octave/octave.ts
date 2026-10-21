@@ -1,25 +1,26 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ProjectCard } from '../../components/project-card/project-card';
-import { OCTAVE, SNELL } from '../../mocks/project.mock';
 import { PictureLightbox } from '../../components/picture-lightbox/picture-lightbox';
 import { GalleryPicture, ProjectGallery } from '../../components/project-gallery/project-gallery';
 import { ProjectPopUp } from '../../components/project-pop-up/project-pop-up';
 import { RevealDirective } from '../../directives/reveal.directive';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Project } from '../../model/project.model';
-import { Router } from '@angular/router';
+import { Project, PROJECT_CATEGORY_LABELS, PROJECT_TYPE_LABELS } from '../../model/project.model';
+import { LanguageService } from '../../services/language-service/language';
+import { OCTAVE_TEXTS } from './octave.texts';
+import { OCTAVE } from './octave.project';
+import { SNELL } from '../snell/snell.project';
 
 const PICTURES_PATH = 'projects/octave/pictures/';
 const picture = (file: string, alt: string): GalleryPicture => ({ src: PICTURES_PATH + file, alt });
 
 @Component({
   selector: 'app-octave',
-  imports: [RevealDirective, ProjectCard, ProjectPopUp, ProjectGallery, PictureLightbox],
+  imports: [RevealDirective, RouterLink, ProjectCard, ProjectPopUp, ProjectGallery, PictureLightbox],
   templateUrl: './octave.html',
   styleUrl: './octave.scss',
 })
-
-
 export class Octave {
 
   public readonly octave: Project = OCTAVE;
@@ -27,82 +28,96 @@ export class Octave {
   private readonly sanitizer: DomSanitizer = inject(DomSanitizer);
 
   public readonly related_projects = [SNELL];
+  
+  public readonly PROJECT_CATEGORY_LABELS = PROJECT_CATEGORY_LABELS;
+  public readonly PROJECT_TYPE_LABELS = PROJECT_TYPE_LABELS;
 
-  public readonly pictures = {
-    home: [picture("home-page.png", "Home page"),
-    picture("solo-game.png", "Game Solo")
-    ],
+  // ---------- Langue ----------
 
-    diagrams: [
-      picture("use-case-diag.png", "Use case diagram"),
-      picture("diag-sequence-therapeute.png", "therapists Sequence diagram"),
-      picture("diag-sequence-user.png", "Participant sequence diagram")
-    ],
+  public readonly language = inject(LanguageService);
 
-    model: [
-      picture("octave-maquette.png", "Octave Model"),
-      picture("solo-game-maquette.png", "Solo Game Model"),
-      picture("octave-config-maquette.png", "Octave Config Model"),
-      picture("statistique-utilisateur-maquette.png", "User statistics Model"),
-      picture("statistique-utilisateur-maquette-2.png", "User statistics Model 2"),
-      picture("statistique-utilisateur-maquette-3.png", "User statistics Model 3"),
-      picture("quiz-score-maquette.png", "Quiz Score Model"),
-      picture("statistic-quiz-maquette.png", "Quiz Statistics Model"),
-      picture("matrio.png", "Matrio"),
-    ],
+  /** Les textes de la page dans la langue affichée. */
+  public readonly texts = computed(() => OCTAVE_TEXTS[this.language.lang()]);
 
-    play_without_frustration: [
-      picture("solo-game.png", "Game solo with hint displayed"),
-      picture("game-solo-good-answer.png", "Game solo good answer"),
-      picture("game-solo-answer-removed.png", "Answer got removed in game"),
-      picture("game-solo-rappel.png", "Game solo recall to the user"),
-      picture("game-solo-congrats.png", "Game congrats the user for reaching the end of the quiz"),
-    ],
+  // ---------- Galeries : une liste par endroit de la page ----------
+  // computed : les textes alternatifs changent avec la langue, les images restent les mêmes.
 
-    configuration: [
-      picture("panel-page.png", "Admin Panel view"),
-      picture("patient-list.png", "Participant list from admin panel view"),
-      picture("patient-edit.png", "Editing the infos of a participant"),
-      picture("patient-config.png", "Editing the in game configurations of a participant"),
-      picture("add-patient.png", "Add participant form"),
-      picture("admin-quiz-list.png", "Quiz list"),
-      picture("admin-quiz-edit.png", "Quiz editing"),
-    ],
+  public readonly pictures = computed(() => {
+    const alt = this.texts().alts;
+    return {
+      home: [
+        picture('home-page.png', alt.home_page),
+        picture('solo-game.png', alt.solo_game),
+      ],
 
+      diagrams: [
+        picture('use-case-diag.png', alt.use_case),
+        picture('diag-sequence-therapeute.png', alt.sequence_staff),
+        picture('diag-sequence-user.png', alt.sequence_participant),
+      ],
 
-    multiplayer_game_setup: [
-      picture("multiplayer-lobby.png", "Multiplayer game lobby"),
-      picture("join-multiplayer-page.png", "Joining a multiplayer quiz via the code"),
-      picture("players-in-the-room.png", "Multiplayer player in the lobby"),
-    ],
+      model: [
+        picture('octave-maquette.png', alt.mockup_home),
+        picture('solo-game-maquette.png', alt.mockup_solo),
+        picture('octave-config-maquette.png', alt.mockup_config),
+        picture('statistique-utilisateur-maquette.png', alt.mockup_participant_stats_1),
+        picture('statistique-utilisateur-maquette-2.png', alt.mockup_participant_stats_2),
+        picture('statistique-utilisateur-maquette-3.png', alt.mockup_participant_stats_3),
+        picture('quiz-score-maquette.png', alt.mockup_quiz_score),
+        picture('statistic-quiz-maquette.png', alt.mockup_quiz_stats),
+        picture('matrio.png', alt.matrio),
+      ],
 
-    multiplayer_in_game: [
-      picture("multiplayer-game.png", "Multiplayer game host view"),
-      picture("multi-quiz-admin-view-hints.png", "Mutilplayer Host view with hints displayed"),
-      picture("multiplayer-game-right.png", "Multiplayer right answer given"),
-      picture("multiplayer-failed.png", "Multiplayer wrong answer given"),
-    ],
+      play_without_frustration: [
+        picture('solo-game.png', alt.solo_hint),
+        picture('game-solo-good-answer.png', alt.solo_right_answer),
+        picture('game-solo-answer-removed.png', alt.solo_answer_removed),
+        picture('game-solo-rappel.png', alt.solo_reminder),
+        picture('game-solo-congrats.png', alt.solo_congrats),
+      ],
 
-    multiplayer_game_end: [
-      picture("multiquiz-end.png", "Multiplayer end game"),
-      picture("replay-1.png", "Multiplayer game replay"),
-      picture("multiplayer-game-leaderboard.png", "Multiplayer leaderboard"),
-    ],
+      configuration: [
+        picture('panel-page.png', alt.admin_panel),
+        picture('patient-list.png', alt.participant_list),
+        picture('patient-edit.png', alt.participant_edit),
+        picture('patient-config.png', alt.participant_config),
+        picture('add-patient.png', alt.participant_add),
+        picture('admin-quiz-list.png', alt.quiz_list),
+        picture('admin-quiz-edit.png', alt.quiz_edit),
+      ],
 
-    quiz_stats: [
-      picture("quiz-stats-page.png", "Quiz statistics"),
-      picture("multiplayer-session-stats.png", "Multiplayer session statistics"),
-      picture("multiplayer-leader-board.png", "Multiplayer session leader board"),
-    ],
+      multiplayer_game_setup: [
+        picture('multiplayer-lobby.png', alt.mp_lobby),
+        picture('join-multiplayer-page.png', alt.mp_join),
+        picture('players-in-the-room.png', alt.mp_players),
+      ],
 
-    participant_stats: [
-      picture("patient-stats.png", "Participent global statistics"),
-      picture("patient-evolution-stats.png", "Participent evolution statistics"),
-      picture("patient-quiz-history.png", "Participant quiz history"),
-    ]
-  }
+      multiplayer_in_game: [
+        picture('multiplayer-game.png', alt.mp_host),
+        picture('multi-quiz-admin-view-hints.png', alt.mp_host_hints),
+        picture('multiplayer-game-right.png', alt.mp_right),
+        picture('multiplayer-failed.png', alt.mp_wrong),
+      ],
 
-  // picture("multiplayer-session-stats.png", "Multiplayer end game"),
+      multiplayer_game_end: [
+        picture('multiquiz-end.png', alt.mp_end),
+        picture('replay-1.png', alt.mp_replay),
+        picture('multiplayer-game-leaderboard.png', alt.mp_leaderboard),
+      ],
+
+      quiz_stats: [
+        picture('quiz-stats-page.png', alt.quiz_stats),
+        picture('multiplayer-session-stats.png', alt.session_stats),
+        picture('multiplayer-leader-board.png', alt.session_leaderboard),
+      ],
+
+      participant_stats: [
+        picture('patient-stats.png', alt.participant_global),
+        picture('patient-evolution-stats.png', alt.participant_evolution),
+        picture('patient-quiz-history.png', alt.participant_history),
+      ],
+    };
+  });
 
   // ---------- Image affichée en grand ----------
 
@@ -154,5 +169,4 @@ export class Octave {
     this.show_project_pop_up = false;
     this.selected_project = null;
   }
-
 }

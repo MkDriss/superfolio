@@ -1,3 +1,5 @@
+@let t = texts();
+
 <article class="card-container">
 
     @if (type === "study") {
@@ -12,14 +14,14 @@
     </div>
 
     <div class="card-body">
-        <h3 class="card-title">Studies</h3>
+        <h3 class="card-title">{{t.studies.title}}</h3>
         <ul class="card-list">
             <li class="card-list-item card-list-item--studies">
                 <img class="card-list-icon" src="icons/northumbria-logo.png" alt="">
                 <div class="card-item-label">
                     <div class="card-item-content">
-                        <span>Northumbria University</span>
-                        <span class="card-item-text">Erasmus in computer science</span>
+                        <span>{{t.studies.northumbria.school_name}}</span>
+                        <span class="card-item-text">{{t.studies.northumbria.description}}</span>
                     </div>
                     <span>2026</span>
                 </div>
@@ -28,8 +30,8 @@
                 <img class="card-list-icon" src="icons/polytech-nice-sophia.png" alt="">
                 <div class="card-item-label">
                     <div class="card-item-content">
-                        <span>Polytech Nice Sophia</span>
-                        <span class="card-item-text">Engineering college</span>
+                        <span>{{t.studies.polytech_nice_sophia.school_name}}</span>
+                        <span class="card-item-text">{{t.studies.polytech_nice_sophia.description}}</span>
                     </div>
                     <span>2024 - 2027</span>
                 </div>
@@ -38,8 +40,8 @@
                 <img class="card-list-icon" src="icons/amu-logo.png" alt="">
                 <div class="card-item-label">
                     <div class="card-item-content">
-                        <span>Aix-Marseille University</span>
-                        <span class="card-item-text">Bachelor</span>
+                        <span>{{t.studies.amu.school_name}}</span>
+                        <span class="card-item-text">{{t.studies.amu.description}}</span>
                     </div>
                     <span>2021 - 2024</span>
                 </div>

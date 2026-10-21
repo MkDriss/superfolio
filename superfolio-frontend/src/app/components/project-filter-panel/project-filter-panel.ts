@@ -1,8 +1,10 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, EventEmitter, HostListener, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { ProjectCategory, ProjectType } from '../../model/project.model';
+import { Component, computed, EventEmitter, HostListener, inject, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { PROJECT_CATEGORY_LABELS, PROJECT_TYPE_LABELS, ProjectCategory, ProjectType } from '../../model/project.model';
 import { Technology } from '../../model/technology.model';
 import { ProjectFilters, count_active_filters, create_empty_filters } from '../../model/project-filters.model';
+import { LanguageService } from '../../services/language-service/language';
+import { PROJECT_FILTERS_TEXTS } from './project-filter.texts';
 
 @Component({
   selector: 'app-project-filter-panel',
@@ -11,6 +13,13 @@ import { ProjectFilters, count_active_filters, create_empty_filters } from '../.
   styleUrl: './project-filter-panel.scss',
 })
 export class ProjectFilterPanel implements OnInit, OnDestroy {
+
+  public readonly language: LanguageService = inject(LanguageService);
+
+  public readonly texts = computed(() => PROJECT_FILTERS_TEXTS[this.language.lang()]);
+
+  public readonly PROJECT_CATEGORY_LABELS = PROJECT_CATEGORY_LABELS;
+  public readonly PROJECT_TYPE_LABELS = PROJECT_TYPE_LABELS;
 
   @Input({ required: true })
   filters!: ProjectFilters;

@@ -1,7 +1,9 @@
+@let t = texts();
+
 <article class="not-found-container`">
     <img class="hero-bg" src="{{this.PICTURES[random_idx]}}" alt="">
     <div class="not-found-content">
-        <h2 class="title">404 not found</h2>
+        <h2 class="title">{{t.title}}</h2>
     </div>
 
     <div class="next-btn-container">
@@ -15,7 +17,7 @@
                         fill="currentColor"></path>
                 </g>
             </svg>
-            Home
+            {{t.home}}
         </button>
     </div>
 

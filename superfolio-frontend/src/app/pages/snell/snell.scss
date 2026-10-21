@@ -19,7 +19,7 @@
     background-color: #232220; // visible le temps que l'image se charge
     user-select: none;
 
-    
+
 }
 
 .banner {
@@ -73,6 +73,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
     rotate: var(--rot, 0deg); // angle final (aussi utilisé sans animation)
     animation: piece-in 0.9s $ease-out both;
 }
+
 
 // Réglages par pièce : les mêmes positions sur ordinateur et sur mobile.
 // (haut, gauche, côté d'arrivée, angle final, délai, balancement continu)

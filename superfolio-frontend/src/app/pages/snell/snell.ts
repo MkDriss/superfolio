@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { NAS_HOME_SERVER, OCTAVE, SNELL } from '../../mocks/project.mock';
-import { Project } from '../../model/project.model';
+import { Component, computed, inject } from '@angular/core';
+import { Project, PROJECT_CATEGORY_LABELS, PROJECT_TYPE_LABELS } from '../../model/project.model';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -8,6 +7,11 @@ import { ProjectCard } from '../../components/project-card/project-card';
 import { ProjectPopUp } from '../../components/project-pop-up/project-pop-up';
 import { GalleryPicture, ProjectGallery } from '../../components/project-gallery/project-gallery';
 import { PictureLightbox } from '../../components/picture-lightbox/picture-lightbox';
+import { LanguageService } from '../../services/language-service/language';
+import { SNELL_TEXTS } from './snell.texts';
+import { SNELL } from './snell.project';
+import { OCTAVE } from '../octave/octave.project';
+import { NAS_HOME_SERVER } from '../nas-home-server/nas-home-server.project';
 
 const PICTURES_PATH = 'projects/snell/pictures/';
 const picture = (file: string, alt: string): GalleryPicture => ({ src: PICTURES_PATH + file, alt });
@@ -25,55 +29,69 @@ export class Snell {
 
   public readonly other_projects = [OCTAVE, NAS_HOME_SERVER];
 
-  // ---------- Galeries : une liste par endroit de la page ----------
+  public readonly PROJECT_CATEGORY_LABELS = PROJECT_CATEGORY_LABELS;
+  public readonly PROJECT_TYPE_LABELS = PROJECT_TYPE_LABELS;
 
-  public readonly pictures = {
-    home: [picture('home-page.png', 'Snell home page')],
-    local_game: [picture('local-1vs1-page.png', 'Local game between two players')],
-    architecture: [picture('architecture.jpg', 'Microservice architecture of Snell')],
-    tutorial: [
-      picture('tutorial.png', 'Interactive tutorial with Coach Bae'),
-      picture('tutorial-hint.png', 'Tutorial step with highlighted cells'),
-    ],
-    puzzles: [
-      picture('puzzles.png', 'Puzzle selection'),
-      picture('puzzle-game.png', 'Puzzle in progress'),
-      picture('puzzle-game-hint.png', 'Puzzle with a hint displayed'),
-    ],
-    ai: [
-      picture('ais-page.png', 'AI opponent selection'),
-      picture('ai-game.png', 'Game against the AI'),
-      picture('ai-game-2.png', 'Another game against the AI'),
-    ],
-    multiplayer: [
-      picture('multiplayer-wait.png', 'Matchmaking waiting screen'),
-      picture('multiplayer-game.png', 'Online multiplayer game'),
-    ],
-    engine: [picture('bits-repartition.jpg', 'Encoding of a piece on a single byte')],
-    review: [picture('review-game.png', 'Game review with the advantage indicator')],
-    progression: [
-      picture('profile-page.png', 'Player profile'),
-      picture('inventory-page.png', 'Player inventory'),
-    ],
-    honesty: [
-      picture('honesty-quiz.png', 'Honesty test: declaring whether you are honest'),
-      picture('honesty-quiz-2.png', 'Honesty test: sorting the statements'),
-    ],
-    mobile: [
-      picture('mobile-home-page.png', 'Mobile app: home page'),
-      picture('mobile-login.png', 'Mobile app: login'),
-      picture('mobile-shop.png', 'Mobile app: shop'),
-      picture('mobile-ais.png', 'Mobile app: AI selection'),
-      picture('mobile-ai-game.png', 'Mobile app: game against the AI'),
-      picture('mobile-friends.png', 'Mobile app: friends'),
-      picture('mobile-puzzles.png', 'Mobile app: puzzle selection'),
-      picture('mobile-puzzle-game.png', 'Mobile app: puzzle in progress'),
-      picture('mobile-tutorial.png', 'Mobile app: tutorial'),
-      picture('mobile-profile.png', 'Mobile app: profile'),
-    ],
-    monitoring: [picture('monitoring.png', 'Monitoring dashboard')],
-    deployment: [picture('snell-cloudflare-archi.jpg', 'Self-hosted deployment through a Cloudflare Tunnel')],
-  };
+  // ---------- Langue ----------
+
+  public readonly language = inject(LanguageService);
+
+  /** Les textes de la page dans la langue affichée. */
+  public readonly texts = computed(() => SNELL_TEXTS[this.language.lang()]);
+
+  // ---------- Galeries : une liste par endroit de la page ----------
+  // computed : les textes alternatifs changent avec la langue, les images restent les mêmes.
+
+  public readonly pictures = computed(() => {
+    const alt = this.texts().alts;
+    return {
+      home: [picture('home-page.png', alt.home)],
+      local_game: [picture('local-1vs1-page.png', alt.local_game)],
+      architecture: [picture('architecture.jpg', alt.architecture)],
+      tutorial: [
+        picture('tutorial.png', alt.tutorial),
+        picture('tutorial-hint.png', alt.tutorial_hint),
+      ],
+      puzzles: [
+        picture('puzzles.png', alt.puzzles),
+        picture('puzzle-game.png', alt.puzzle_game),
+        picture('puzzle-game-hint.png', alt.puzzle_hint),
+      ],
+      ai: [
+        picture('ais-page.png', alt.ais),
+        picture('ai-game.png', alt.ai_game),
+        picture('ai-game-2.png', alt.ai_game_2),
+      ],
+      multiplayer: [
+        picture('multiplayer-wait.png', alt.multiplayer_wait),
+        picture('multiplayer-game.png', alt.multiplayer_game),
+      ],
+      engine: [picture('bits-repartition.jpg', alt.engine)],
+      review: [picture('review-game.png', alt.review)],
+      progression: [
+        picture('profile-page.png', alt.profile),
+        picture('inventory-page.png', alt.inventory),
+      ],
+      honesty: [
+        picture('honesty-quiz.png', alt.honesty_1),
+        picture('honesty-quiz-2.png', alt.honesty_2),
+      ],
+      mobile: [
+        picture('mobile-home-page.png', alt.mobile_home),
+        picture('mobile-login.png', alt.mobile_login),
+        picture('mobile-shop.png', alt.mobile_shop),
+        picture('mobile-ais.png', alt.mobile_ais),
+        picture('mobile-ai-game.png', alt.mobile_ai_game),
+        picture('mobile-friends.png', alt.mobile_friends),
+        picture('mobile-puzzles.png', alt.mobile_puzzles),
+        picture('mobile-puzzle-game.png', alt.mobile_puzzle_game),
+        picture('mobile-tutorial.png', alt.mobile_tutorial),
+        picture('mobile-profile.png', alt.mobile_profile),
+      ],
+      monitoring: [picture('monitoring.png', alt.monitoring)],
+      deployment: [picture('snell-cloudflare-archi.jpg', alt.deployment)],
+    };
+  });
 
   // ---------- Image affichée en grand ----------
 

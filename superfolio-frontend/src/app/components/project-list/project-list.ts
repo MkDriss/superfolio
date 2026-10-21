@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, computed, EventEmitter, inject, Output } from '@angular/core';
 import { ProjectCard } from '../project-card/project-card';
 import { ProjectPopUp } from '../project-pop-up/project-pop-up';
 import { ProjectFilterPanel } from '../project-filter-panel/project-filter-panel';
@@ -8,6 +8,8 @@ import { technologies } from '../../mocks/technology.mock';
 import { Project } from '../../model/project.model';
 import { Technology } from '../../model/technology.model';
 import { ProjectFilters, count_active_filters, create_empty_filters } from '../../model/project-filters.model';
+import { LanguageService } from '../../services/language-service/language';
+import { PROJECT_LIST_TEXTS } from './project-list.texts';
 
 @Component({
   selector: 'app-project-list',
@@ -18,6 +20,10 @@ import { ProjectFilters, count_active_filters, create_empty_filters } from '../.
 export class ProjectList {
 
   private readonly projectService: ProjectService = inject(ProjectService);
+
+  private readonly language: LanguageService = inject(LanguageService);
+
+  public readonly texts = computed(() => PROJECT_LIST_TEXTS[this.language.lang()]);
 
   @Output()
   next: EventEmitter<void> = new EventEmitter<void>();

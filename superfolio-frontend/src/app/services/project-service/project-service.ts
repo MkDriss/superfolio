@@ -24,8 +24,7 @@ export class ProjectService {
 
     return this.projects.filter(project =>
       (q === ''
-        || project.name.toLowerCase().includes(q)
-        || project.description.toLowerCase().includes(q))
+        || project.name.toLowerCase().includes(q))
       && (filters.categories.length === 0 || filters.categories.includes(project.category))
       && (filters.types.length === 0 || filters.types.includes(project.type))
       // remplace .some par .every pour exiger TOUTES les technologies cochées

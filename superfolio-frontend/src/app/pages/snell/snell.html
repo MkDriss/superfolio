@@ -1,68 +1,69 @@
+@let t = texts();
+@let pics = pictures();
+
+<!-- icône GitHub définie une seule fois, réutilisée plus bas avec <use> -->
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="github-icon" viewBox="0 0 73 73">
+        <g transform="translate(2, 2)">
+            <rect x="-1" y="-1" width="71" height="71" rx="14" fill="#000000" stroke="#000000" stroke-width="2"></rect>
+            <path fill="#FFFFFF"
+                d="M58.3067362,21.4281798 C55.895743,17.2972267 52.6253846,14.0267453 48.4948004,11.615998 C44.3636013,9.20512774 39.8535636,8 34.9614901,8 C30.0700314,8 25.5585181,9.20549662 21.4281798,11.615998 C17.2972267,14.0266224 14.0269912,17.2972267 11.615998,21.4281798 C9.20537366,25.5590099 8,30.0699084 8,34.9607523 C8,40.8357654 9.71405782,46.1187277 13.1430342,50.8109917 C16.5716416,55.5036246 21.0008949,58.7507436 26.4304251,60.5527176 C27.0624378,60.6700211 27.5302994,60.5875152 27.8345016,60.3072901 C28.1388268,60.0266961 28.290805,59.6752774 28.290805,59.2545094 C28.290805,59.1842994 28.2847799,58.5526556 28.2730988,57.3588401 C28.2610487,56.1650247 28.2553926,55.1235563 28.2553926,54.2349267 L27.4479164,54.3746089 C26.9330843,54.468919 26.2836113,54.5088809 25.4994975,54.4975686 C24.7157525,54.4866252 23.9021284,54.4044881 23.0597317,54.2517722 C22.2169661,54.1004088 21.4330982,53.749359 20.7075131,53.1993604 C19.982297,52.6493618 19.4674649,51.9294329 19.1631397,51.0406804 L18.8120898,50.2328353 C18.5780976,49.6950097 18.2097104,49.0975487 17.7064365,48.4426655 C17.2031625,47.7871675 16.6942324,47.3427912 16.1794003,47.108799 L15.9336039,46.9328437 C15.7698216,46.815909 15.6178435,46.6748743 15.4773006,46.511215 C15.3368806,46.3475556 15.2317501,46.1837734 15.1615401,46.0197452 C15.0912072,45.855594 15.1494901,45.7209532 15.3370036,45.6153308 C15.5245171,45.5097084 15.8633939,45.4584343 16.3551097,45.4584343 L17.0569635,45.5633189 C17.5250709,45.6571371 18.104088,45.9373622 18.7947525,46.4057156 C19.4850481,46.8737001 20.052507,47.4821045 20.4972521,48.230683 C21.0358155,49.1905062 21.6846737,49.9218703 22.4456711,50.4251443 C23.2060537,50.9284182 23.9727072,51.1796248 24.744894,51.1796248 C25.5170807,51.1796248 26.1840139,51.121096 26.7459396,51.0046532 C27.3072505,50.8875956 27.8338868,50.7116403 28.3256025,50.477771 C28.5362325,48.9090515 29.1097164,47.7039238 30.0455624,46.8615271 C28.7116959,46.721353 27.5124702,46.5102313 26.4472706,46.2295144 C25.3826858,45.9484285 24.2825656,45.4922482 23.1476478,44.8597436 C22.0121153,44.2280998 21.0701212,43.44374 20.3214198,42.5080169 C19.5725954,41.571802 18.9580429,40.3426971 18.4786232,38.821809 C17.9989575,37.300306 17.7590632,35.5451796 17.7590632,33.5559381 C17.7590632,30.7235621 18.6837199,28.3133066 20.5326645,26.3238191 C19.6665366,24.1944035 19.7483048,21.8072644 20.778215,19.1626478 C21.4569523,18.951772 22.4635002,19.1100211 23.7973667,19.6364115 C25.1314792,20.1630477 26.1082708,20.6141868 26.7287253,20.9882301 C27.3491798,21.3621504 27.8463057,21.6790175 28.2208409,21.9360032 C30.3978419,21.3277217 32.644438,21.0235195 34.9612442,21.0235195 C37.2780503,21.0235195 39.5251383,21.3277217 41.7022622,21.9360032 L43.0362517,21.0938524 C43.9484895,20.5319267 45.0257392,20.0169716 46.2654186,19.5488642 C47.5058357,19.0810026 48.4543466,18.9521409 49.1099676,19.1630167 C50.1627483,21.8077563 50.2565666,24.1947724 49.3901927,26.324188 C51.2390143,28.3136755 52.1640399,30.7245457 52.1640399,33.556307 C52.1640399,35.5455485 51.9232849,37.3062081 51.444357,38.8393922 C50.9648143,40.3728223 50.3449746,41.6006975 49.5845919,42.5256002 C48.8233486,43.4503799 47.8753296,44.2285916 46.7404118,44.8601125 C45.6052481,45.4921252 44.504759,45.9483056 43.4401742,46.2293914 C42.3750975,46.5104772 41.1758719,46.7217219 39.8420054,46.8621419 C41.0585683,47.9149226 41.6669728,49.5767225 41.6669728,51.846804 L41.6669728,59.2535257 C41.6669728,59.6742937 41.8132948,60.0255895 42.1061847,60.3063064 C42.3987058,60.5865315 42.8606653,60.6690374 43.492678,60.5516109 C48.922946,58.7498829 53.3521992,55.5026409 56.7806837,50.810008 C60.2087994,46.117744 61.923472,40.8347817 61.923472,34.9597686 C61.9222424,30.0695396 60.7162539,25.5590099 58.3067362,21.4281798 Z">
+            </path>
+        </g>
+    </symbol>
+</svg>
+
 <div class="project-container">
     <div class="banner-container">
         <img src="projects/snell/banner.png" class="banner" alt="">
         <div class="banner-scrim" aria-hidden="true"></div>
-        <img src="projects/snell/pictures/pieces/triangle_white.png" id="t-white" class="piece" alt="white-triangle">
-        <img src="projects/snell/pictures/pieces/triangle_black.png" id="t-black" class="piece" alt="black-triangle">
-        <img src="projects/snell/pictures/pieces/king_white.png" id="k-white" class="piece" alt="white-king">
-        <img src="projects/snell/pictures/pieces/king_black.png" id="k-black" class="piece" alt="black-king">
-        <img src="projects/snell/pictures/pieces/protector_white.png" id="p-white" class="piece" alt="white-protector">
-        <img src="projects/snell/pictures/pieces/protector_black.png" id="p-black" class="piece" alt="black-protector">
-        <img src="projects/snell/pictures/pieces/full_mirror_white.png" id="f-white" class="piece"
-            alt="white-full-mirror">
-        <img src="projects/snell/pictures/pieces/full_mirror_black.png" id="f-black" class="piece"
-            alt="black-full-mirror">
-        <img src="projects/snell/pictures/pieces/shooter_white.png" id="s-white" class="piece" alt="white-shooter">
-        <img src="projects/snell/pictures/pieces/shooter_black.png" id="s-black" class="piece" alt="black-shooter">
+        <!-- pièces décoratives : alt vide -->
+        <img src="projects/snell/pictures/pieces/triangle_white.png" id="t-white" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/triangle_black.png" id="t-black" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/king_white.png" id="k-white" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/king_black.png" id="k-black" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/protector_white.png" id="p-white" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/protector_black.png" id="p-black" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/full_mirror_white.png" id="f-white" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/full_mirror_black.png" id="f-black" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/shooter_white.png" id="s-white" class="piece" alt="">
+        <img src="projects/snell/pictures/pieces/shooter_black.png" id="s-black" class="piece" alt="">
     </div>
+
     <div class="project-content">
         <div class="project-title-container">
-            <h1 class="project-title">{{snell.name}}</h1>
-            <h3 class="project-date">{{snell.date}}</h3>
+            <h1 class="project-title">{{ snell.name }}</h1>
+            <h3 class="project-date">{{ snell.date }}</h3>
         </div>
         <div class="project-header">
             <dl class="meta">
                 <div class="meta-long-row">
                     <div class="meta-row">
-                        <dt>Category</dt>
-                        <dd>{{snell.category}}</dd>
+                        <dt>{{t.header.category}}</dt>
+                        <dd>{{this.language.pick(PROJECT_CATEGORY_LABELS[snell.category])}}</dd>
                     </div>
                     <div class="meta-row github-desktop">
-                        <a class="header-link" target="_blank" href="https://github.com/MkDriss/ps8-snell">View on Github
-                            <svg class="media-ico github-ico" viewBox="0 0 73 73" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                fill="#000000" aria-hidden="true">
-                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <defs> </defs>
-                                    <g id="team-collaboration/version-control/github" stroke="none" stroke-width="1"
-                                        fill="none" fill-rule="evenodd">
-                                        <g id="container" transform="translate(2.000000, 2.000000)" fill-rule="nonzero">
-                                            <rect id="mask" stroke="#000000" stroke-width="2" fill="#000000" x="-1"
-                                                y="-1" width="71" height="71" rx="14"> </rect>
-                                            <path
-                                                d="M58.3067362,21.4281798 C55.895743,17.2972267 52.6253846,14.0267453 48.4948004,11.615998 C44.3636013,9.20512774 39.8535636,8 34.9614901,8 C30.0700314,8 25.5585181,9.20549662 21.4281798,11.615998 C17.2972267,14.0266224 14.0269912,17.2972267 11.615998,21.4281798 C9.20537366,25.5590099 8,30.0699084 8,34.9607523 C8,40.8357654 9.71405782,46.1187277 13.1430342,50.8109917 C16.5716416,55.5036246 21.0008949,58.7507436 26.4304251,60.5527176 C27.0624378,60.6700211 27.5302994,60.5875152 27.8345016,60.3072901 C28.1388268,60.0266961 28.290805,59.6752774 28.290805,59.2545094 C28.290805,59.1842994 28.2847799,58.5526556 28.2730988,57.3588401 C28.2610487,56.1650247 28.2553926,55.1235563 28.2553926,54.2349267 L27.4479164,54.3746089 C26.9330843,54.468919 26.2836113,54.5088809 25.4994975,54.4975686 C24.7157525,54.4866252 23.9021284,54.4044881 23.0597317,54.2517722 C22.2169661,54.1004088 21.4330982,53.749359 20.7075131,53.1993604 C19.982297,52.6493618 19.4674649,51.9294329 19.1631397,51.0406804 L18.8120898,50.2328353 C18.5780976,49.6950097 18.2097104,49.0975487 17.7064365,48.4426655 C17.2031625,47.7871675 16.6942324,47.3427912 16.1794003,47.108799 L15.9336039,46.9328437 C15.7698216,46.815909 15.6178435,46.6748743 15.4773006,46.511215 C15.3368806,46.3475556 15.2317501,46.1837734 15.1615401,46.0197452 C15.0912072,45.855594 15.1494901,45.7209532 15.3370036,45.6153308 C15.5245171,45.5097084 15.8633939,45.4584343 16.3551097,45.4584343 L17.0569635,45.5633189 C17.5250709,45.6571371 18.104088,45.9373622 18.7947525,46.4057156 C19.4850481,46.8737001 20.052507,47.4821045 20.4972521,48.230683 C21.0358155,49.1905062 21.6846737,49.9218703 22.4456711,50.4251443 C23.2060537,50.9284182 23.9727072,51.1796248 24.744894,51.1796248 C25.5170807,51.1796248 26.1840139,51.121096 26.7459396,51.0046532 C27.3072505,50.8875956 27.8338868,50.7116403 28.3256025,50.477771 C28.5362325,48.9090515 29.1097164,47.7039238 30.0455624,46.8615271 C28.7116959,46.721353 27.5124702,46.5102313 26.4472706,46.2295144 C25.3826858,45.9484285 24.2825656,45.4922482 23.1476478,44.8597436 C22.0121153,44.2280998 21.0701212,43.44374 20.3214198,42.5080169 C19.5725954,41.571802 18.9580429,40.3426971 18.4786232,38.821809 C17.9989575,37.300306 17.7590632,35.5451796 17.7590632,33.5559381 C17.7590632,30.7235621 18.6837199,28.3133066 20.5326645,26.3238191 C19.6665366,24.1944035 19.7483048,21.8072644 20.778215,19.1626478 C21.4569523,18.951772 22.4635002,19.1100211 23.7973667,19.6364115 C25.1314792,20.1630477 26.1082708,20.6141868 26.7287253,20.9882301 C27.3491798,21.3621504 27.8463057,21.6790175 28.2208409,21.9360032 C30.3978419,21.3277217 32.644438,21.0235195 34.9612442,21.0235195 C37.2780503,21.0235195 39.5251383,21.3277217 41.7022622,21.9360032 L43.0362517,21.0938524 C43.9484895,20.5319267 45.0257392,20.0169716 46.2654186,19.5488642 C47.5058357,19.0810026 48.4543466,18.9521409 49.1099676,19.1630167 C50.1627483,21.8077563 50.2565666,24.1947724 49.3901927,26.324188 C51.2390143,28.3136755 52.1640399,30.7245457 52.1640399,33.556307 C52.1640399,35.5455485 51.9232849,37.3062081 51.444357,38.8393922 C50.9648143,40.3728223 50.3449746,41.6006975 49.5845919,42.5256002 C48.8233486,43.4503799 47.8753296,44.2285916 46.7404118,44.8601125 C45.6052481,45.4921252 44.504759,45.9483056 43.4401742,46.2293914 C42.3750975,46.5104772 41.1758719,46.7217219 39.8420054,46.8621419 C41.0585683,47.9149226 41.6669728,49.5767225 41.6669728,51.846804 L41.6669728,59.2535257 C41.6669728,59.6742937 41.8132948,60.0255895 42.1061847,60.3063064 C42.3987058,60.5865315 42.8606653,60.6690374 43.492678,60.5516109 C48.922946,58.7498829 53.3521992,55.5026409 56.7806837,50.810008 C60.2087994,46.117744 61.923472,40.8347817 61.923472,34.9597686 C61.9222424,30.0695396 60.7162539,25.5590099 58.3067362,21.4281798 Z"
-                                                id="Shape" fill="#FFFFFF"> </path>
-                                        </g>
-                                    </g>
-                                </g>
+                        <a class="header-link" target="_blank" rel="noopener noreferrer"
+                            href="https://github.com/MkDriss/ps8-snell">
+                            {{ t.header.github }}
+                            <svg class="media-ico github-ico" aria-hidden="true">
+                                <use href="#github-icon"></use>
                             </svg>
                         </a>
                     </div>
                 </div>
                 <div class="meta-row">
-                    <dt>Type</dt>
-                    <dd>{{snell.type}}</dd>
+                    <dt>{{ t.header.type }}</dt>
+                    <dd>{{ this.language.pick(PROJECT_TYPE_LABELS[snell.type])}}</dd>
                 </div>
-                @if (snell.award && snell.award.content !== "") {
+                @if (snell.award && language.pick(snell.award.content) !== "") {
                 <div class="meta-row">
-                    <dt>Awards</dt>
-                    <dd>{{snell.award.content}}</dd>
+                    <dt>{{ t.header.awards }}</dt>
+                    <dd>{{ language.pick(snell.award.content) }}</dd>
                 </div>
                 }
 
-                <dt>Technologies</dt>
+                <dt>{{ t.header.technologies }}</dt>
                 <div class="technologies-list">
                     @for (project_technologie of snell.technologies; track project_technologie.id) {
                     <span class="technology-ico" role="img" tabindex="0" [attr.data-name]="project_technologie.name"
@@ -72,470 +73,236 @@
                 </div>
 
                 <div class="meta-row github-mobile">
-                    <a class="header-link" target="_blank" href="https://">View on Github
-                        <svg class="media-ico github-ico" viewBox="0 0 73 73" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"
-                            aria-hidden="true">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <defs> </defs>
-                                <g id="team-collaboration/version-control/github" stroke="none" stroke-width="1"
-                                    fill="none" fill-rule="evenodd">
-                                    <g id="container" transform="translate(2.000000, 2.000000)" fill-rule="nonzero">
-                                        <rect id="mask" stroke="#000000" stroke-width="2" fill="#000000" x="-1" y="-1"
-                                            width="71" height="71" rx="14"> </rect>
-                                        <path
-                                            d="M58.3067362,21.4281798 C55.895743,17.2972267 52.6253846,14.0267453 48.4948004,11.615998 C44.3636013,9.20512774 39.8535636,8 34.9614901,8 C30.0700314,8 25.5585181,9.20549662 21.4281798,11.615998 C17.2972267,14.0266224 14.0269912,17.2972267 11.615998,21.4281798 C9.20537366,25.5590099 8,30.0699084 8,34.9607523 C8,40.8357654 9.71405782,46.1187277 13.1430342,50.8109917 C16.5716416,55.5036246 21.0008949,58.7507436 26.4304251,60.5527176 C27.0624378,60.6700211 27.5302994,60.5875152 27.8345016,60.3072901 C28.1388268,60.0266961 28.290805,59.6752774 28.290805,59.2545094 C28.290805,59.1842994 28.2847799,58.5526556 28.2730988,57.3588401 C28.2610487,56.1650247 28.2553926,55.1235563 28.2553926,54.2349267 L27.4479164,54.3746089 C26.9330843,54.468919 26.2836113,54.5088809 25.4994975,54.4975686 C24.7157525,54.4866252 23.9021284,54.4044881 23.0597317,54.2517722 C22.2169661,54.1004088 21.4330982,53.749359 20.7075131,53.1993604 C19.982297,52.6493618 19.4674649,51.9294329 19.1631397,51.0406804 L18.8120898,50.2328353 C18.5780976,49.6950097 18.2097104,49.0975487 17.7064365,48.4426655 C17.2031625,47.7871675 16.6942324,47.3427912 16.1794003,47.108799 L15.9336039,46.9328437 C15.7698216,46.815909 15.6178435,46.6748743 15.4773006,46.511215 C15.3368806,46.3475556 15.2317501,46.1837734 15.1615401,46.0197452 C15.0912072,45.855594 15.1494901,45.7209532 15.3370036,45.6153308 C15.5245171,45.5097084 15.8633939,45.4584343 16.3551097,45.4584343 L17.0569635,45.5633189 C17.5250709,45.6571371 18.104088,45.9373622 18.7947525,46.4057156 C19.4850481,46.8737001 20.052507,47.4821045 20.4972521,48.230683 C21.0358155,49.1905062 21.6846737,49.9218703 22.4456711,50.4251443 C23.2060537,50.9284182 23.9727072,51.1796248 24.744894,51.1796248 C25.5170807,51.1796248 26.1840139,51.121096 26.7459396,51.0046532 C27.3072505,50.8875956 27.8338868,50.7116403 28.3256025,50.477771 C28.5362325,48.9090515 29.1097164,47.7039238 30.0455624,46.8615271 C28.7116959,46.721353 27.5124702,46.5102313 26.4472706,46.2295144 C25.3826858,45.9484285 24.2825656,45.4922482 23.1476478,44.8597436 C22.0121153,44.2280998 21.0701212,43.44374 20.3214198,42.5080169 C19.5725954,41.571802 18.9580429,40.3426971 18.4786232,38.821809 C17.9989575,37.300306 17.7590632,35.5451796 17.7590632,33.5559381 C17.7590632,30.7235621 18.6837199,28.3133066 20.5326645,26.3238191 C19.6665366,24.1944035 19.7483048,21.8072644 20.778215,19.1626478 C21.4569523,18.951772 22.4635002,19.1100211 23.7973667,19.6364115 C25.1314792,20.1630477 26.1082708,20.6141868 26.7287253,20.9882301 C27.3491798,21.3621504 27.8463057,21.6790175 28.2208409,21.9360032 C30.3978419,21.3277217 32.644438,21.0235195 34.9612442,21.0235195 C37.2780503,21.0235195 39.5251383,21.3277217 41.7022622,21.9360032 L43.0362517,21.0938524 C43.9484895,20.5319267 45.0257392,20.0169716 46.2654186,19.5488642 C47.5058357,19.0810026 48.4543466,18.9521409 49.1099676,19.1630167 C50.1627483,21.8077563 50.2565666,24.1947724 49.3901927,26.324188 C51.2390143,28.3136755 52.1640399,30.7245457 52.1640399,33.556307 C52.1640399,35.5455485 51.9232849,37.3062081 51.444357,38.8393922 C50.9648143,40.3728223 50.3449746,41.6006975 49.5845919,42.5256002 C48.8233486,43.4503799 47.8753296,44.2285916 46.7404118,44.8601125 C45.6052481,45.4921252 44.504759,45.9483056 43.4401742,46.2293914 C42.3750975,46.5104772 41.1758719,46.7217219 39.8420054,46.8621419 C41.0585683,47.9149226 41.6669728,49.5767225 41.6669728,51.846804 L41.6669728,59.2535257 C41.6669728,59.6742937 41.8132948,60.0255895 42.1061847,60.3063064 C42.3987058,60.5865315 42.8606653,60.6690374 43.492678,60.5516109 C48.922946,58.7498829 53.3521992,55.5026409 56.7806837,50.810008 C60.2087994,46.117744 61.923472,40.8347817 61.923472,34.9597686 C61.9222424,30.0695396 60.7162539,25.5590099 58.3067362,21.4281798 Z"
-                                            id="Shape" fill="#FFFFFF"> </path>
-                                    </g>
-                                </g>
-                            </g>
+                    <a class="header-link" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/MkDriss/ps8-snell">
+                        {{ t.header.github }}
+                        <svg class="media-ico github-ico" aria-hidden="true">
+                            <use href="#github-icon"></use>
                         </svg>
                     </a>
                 </div>
-
             </dl>
         </div>
-        <div class="project-content">
 
-            <p class="project-p">
-                Snell is a multiplayer web version of Khet, the laser chess game, built in a team of two as a school
-                project. The catch: no frameworks, only vanilla JavaScript. So we built our own lightweight HTTP
-                framework, and designed a microservice architecture able to absorb a new feature every week.
-            </p>
+        <div class="project-body">
 
-            <p class="project-p">
-                Beyond the brief, we added an AI opponent with several difficulty levels, an interactive tutorial,
-                puzzles, a shop, an Android app, real-time monitoring and encrypted backups, and I self-hosted the whole
-                platform on a Raspberry Pi. It won both the Jury Prize and the Audience Prize at the 2026 Fullstack
-                Contest.
-            </p>
+            <p class="project-p">{{ t.intro.p1 }}</p>
+            <p class="project-p">{{ t.intro.p2 }}</p>
 
-            <h2 class="project-p-title">The context</h2>
+            <!-- ---------- Le contexte ---------- -->
 
-            <p class="project-p">
-                Snell started as a school assignment with a simple premise: build an online version of Khet, a board
-                game where players use mirrors to guide a laser toward the opposing king. Our teacher reworked the
-                original rules into his own version, and set a pace that would shape the entire project: every week,
-                a new feature to deliver, until the final version.
-            </p>
+            <h2 class="project-p-title">{{ t.context.title }}</h2>
+            <p class="project-p">{{ t.context.p1 }}</p>
+            <p class="project-p">{{ t.context.p2 }}</p>
+            <p class="project-p single-row">{{ t.context.p3 }}</p>
 
-            <p class="project-p">
-                We didn't start from a blank page, but close to it. The starter project gave us a simple HTTP server
-                able to serve files, and the Socket.IO code for real-time communication. Everything else had to be
-                built by hand: frameworks were forbidden, and only a short list of libraries was allowed, for tasks
-                where rebuilding them would teach little, such as WebSockets or password hashing. The goal was
-                clear: understand how the features of a full-stack application work natively, before ever relying on
-                abstractions.
-            </p>
+            <app-project-gallery [pictures]="pics.home" (enlarge)="open_picture($event)"></app-project-gallery>
 
-            <p class="project-p single-row">
-                Looking back, these two constraints ended up driving almost every decision we made. The rest of this
-                page tells how.
-            </p>
+            <!-- ---------- Le jeu ---------- -->
 
-            <app-project-gallery [pictures]="pictures.home" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">The Game</h2>
-
-            <p class="project-p single-row">
-                The rules are a reworked version of Khet, played on a 10×10 grid. Each player controls five kinds of
-                pieces, which we renamed for our version:
-            </p>
+            <h2 class="project-p-title">{{ t.game.title }}</h2>
+            <p class="project-p single-row">{{ t.game.intro }}</p>
 
             <div class="pieces-description">
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/shooter_white.png" alt="">
-                    <p class="piece-description">The Shooter, an indestructible piece that fires the laser at the end of
-                        every turn.</p>
+                    <p class="piece-description">{{ t.game.shooter }}</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/protector_white.png" alt="">
-                    <p class="piece-description">The Protector, shielded on one side only.</p>
+                    <p class="piece-description">{{ t.game.protector }}</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/triangle_white.png" alt="">
-                    <p class="piece-description">The Triangles, whose single mirror redirects the beam.</p>
+                    <p class="piece-description">{{ t.game.triangles }}</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/full_mirror_white.png" alt="">
-                    <p class="piece-description">The Full Mirror, which reflects on both sides and can never be
-                        destroyed.
-                    </p>
+                    <p class="piece-description">{{ t.game.full_mirror }}</p>
                 </div>
                 <div class="piece-description-container">
                     <img class="piece-ico" src="projects/snell/pictures/pieces/king_white.png" alt="">
-                    <p class="piece-description">The King, vulnerable from every angle. Lose your King, and you lose the
-                        game.</p>
+                    <p class="piece-description">{{ t.game.king }}</p>
                 </div>
             </div>
 
-            <p class="project-p">
-                On each turn, a player performs exactly one action: rotate a piece, move it, place a Triangle from their
-                reserve, or swap their Full Mirror with their Shooter or their King, each swap having its own cooldown.
-                Then the laser fires, bounces off the mirrors, and destroys every unprotected piece in its path. A
-                destroyed Triangle isn't gone for good: it joins the opponent's reserve, ready to be used against its
-                former owner. And every game starts differently, since the initial positions are randomized and mirrored
-                around the center of the board.
-            </p>
-
-            <app-project-gallery [pictures]="pictures.local_game" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <p class="project-p single-row">
-                For the look and feel, we picked a theme with a wink: Snell is a playful parody of chess.com, from its
-                colors to its crossed-out logo, all the way to our very own coach, Bae.
-            </p>
-
-            <h2 class="project-p-title">Building everything by hand</h2>
-
-            <p class="project-p">
-                Without a framework, every HTTP request had to be handled from scratch: parsing the URL, reading the
-                body, routing it to the right function, sending back a response. After writing the same logic a few
-                times, we did what any framework does under the hood: we extracted it into our own lightweight,
-                Express-like framework, with routing and middlewares. Writing it ourselves meant understanding exactly
-                what happens between a request arriving and a response leaving, which is precisely what libraries are
-                designed to hide.
-            </p>
-
-            <h2 class="project-p-title">An architecture built to grow</h2>
-
-            <p class="project-p">
-                With a new feature every week, we needed an architecture where adding something wouldn't mean breaking
-                everything else. Splitting the platform into microservices felt like the natural answer: each domain
-                lives in its own service (game, users, chat, shop, achievements, mail...), runs in its own Docker
-                container, and can evolve independently. A single gateway sits in front of them: it is the only entry
-                point reachable from the outside, and it checks authentication before forwarding each request to the
-                right service.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/architecture.jpg" class="project-plain-img" alt="home-page">
-            </div> -->
-
-            <app-project-gallery [pictures]="pictures.architecture"
-                (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <p class="project-p">
-                This choice paid off week after week. When a new feature came in, it often meant adding a new service
-                and plugging it into the gateway, without touching the rest.
-            </p>
-
-            <h2 class="project-p-title">Learning to play</h2>
-
-            <p class="project-p">
-                The brief asked for a tutorial, or a text explaining the rules. A wall of text felt like the fastest way
-                to lose new players, so we built something interactive instead: Coach Bae walks you through the rules
-                step by step, while the board highlights the cells you need to interact with.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/tutorial.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/tutorial-hint.png" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.tutorial" (enlarge)="open_picture($event)"></app-project-gallery>
-
-
-            <p class="project-p single-row">
-                Once the basics are in place, puzzles take over: tricky positions to solve, with hints when you're
-                stuck, to practice the kind of situations that decide real games.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/puzzles.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/puzzle-game.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/puzzle-game-hint.png" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.puzzles" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">Playing</h2>
-
-            <p class="project-p">
-                Local and against the AI. Two players can face each other on the same screen, or take on one of our AI
-                opponents, each with its own level and personality (more on them below). Against the AI, players also
-                choose their color: white, black or random, white always moving first, as in chess.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/ais-page.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/ai-game.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/ai-game-2.png" class="project-plain-img" alt="home-page">
-            </div> -->
-
-            <app-project-gallery [pictures]="pictures.ai" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <p class="project-p">
-                Online, in real time. Multiplayer games are synchronized in real time through Socket.IO, and every move
-                is validated by the server: as our teacher put it, never trust your users. Rather than pairing players
-                at random, our matchmaking compares their Elo ratings to find an opponent of similar level. If no match
-                turns up after a while, it gradually widens the acceptable rating gap, so nobody waits forever. Ratings
-                are updated after every online game, and the gap between the two players matters: the bigger it is, the
-                more the underdog stands to win, and the favorite to lose.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/multiplayer-wait.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/multiplayer-game.png" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.multiplayer"
-                (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">Inside the AI</h2>
-
-            <p class="project-p">
-                Our first AI played at random: enough to check that the engine knew every legal move, not enough to make
-                a real opponent. Each improvement that followed answers a specific problem.
-            </p>
-
-            <h2 class="project-p-subtitle">I. Thinking ahead</h2>
-
-            <p class="project-p">
-                To play well, the AI has to imagine its move, then the opponent's best reply, then its own answer, and
-                so on. That is exactly what minimax does (here in its negamax form). But the possibilities multiply at
-                every step, so the AI drops any line as soon as it is proven worse than one it has already found
-                (alpha-beta pruning).
-            </p>
-
-            <h2 class="project-p-subtitle">II. Too many moves</h2>
-
-            <p class="project-p">
-                In a typical starting position, a player has 343 possible actions, and 324 of them are Triangle
-                placements that mostly change nothing. Since the laser is fully predictable, a move can only matter if
-                it touches the beam's path or the shooter itself. So the AI looks at those moves first, along with the
-                ones that already worked elsewhere in its search (killer moves, history heuristic), and gives the
-                harmless-looking ones only a quick glance, unless they turn out better than expected (principal
-                variation search, late move reductions, futility pruning).
-            </p>
-
-            <h2 class="project-p-subtitle">III. Limited time</h2>
-
-            <p class="project-p">
-                The AI never knows in advance how deep it will manage to search. So it starts one move ahead, then goes
-                deeper and deeper until its time runs out, always keeping the best move found so far (iterative
-                deepening). Along the way, it remembers the positions it has already analyzed, since the same one can be
-                reached in different orders, recognizing each by a compact fingerprint (transposition table, Zobrist
-                hashing).
-            </p>
-
-            <h2 class="project-p-subtitle">IV. Stopping at the wrong moment</h2>
-
-            <p class="project-p">
-                A position can look excellent right after your own shot, and terrible right after your opponent's. So
-                before judging a position, the AI plays out any exchange of shots still pending (quiescence search).
-            </p>
-
-            <h2 class="project-p-subtitle">V. Judging a position</h2>
-
-            <p class="project-p">
-                In laser chess, only the beam kills: chess intuitions like controlling the center don't apply. So the AI
-                looks at what each laser would destroy if it fired now, and at how exposed each King is to a redirected
-                beam.
-            </p>
-
-            <h2 class="project-p-subtitle">VI. Speed</h2>
-            <p class="project-p">
-                All of this means weighing hundreds of thousands of positions every turn. To keep up, each piece fits in
-                a single byte, the whole board in 100 bytes, and the search creates no new objects along the way.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/bits-repartition.jpg" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.engine" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-subtitle">VII. A ladder of opponents</h2>
-            <p class="project-p">
-                All the AIs share the same engine; only their profile changes: thinking time, temperament, and how often
-                they make mistakes. Making a weak AI short-sighted would make it oddly sharp at times, so instead it
-                occasionally picks a lesser move, though never one that loses its King on the spot, just like a
-                beginner. The ladder goes from Patrick La Chine (500 Elo), who plays randomly, to Bot Bizot (2500 Elo),
-                who is a formidable opponent.
-            </p>
-
-            <p class="project-p single-row">
-                These techniques come from chess engines: the references at the end of this
-                page explain them in more depth.
-            </p>
-
-            <h2 class="project-p-title">Reviewing a game</h2>
-
-            <p class="project-p">
-                Beyond the brief, any past game, online or against the AI, can be replayed move by move. An evaluation
-                function analyzes the board at each step to estimate which player has the advantage, so you can spot the
-                exact move where a game turned.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/review-game.png" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.review" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">Playing together</h2>
-
-            <p class="project-p">
-                Players create an account, add friends (a request on one side, an approval on the other) and challenge
-                them to a duel. The brief asked for one kind of chat out of three: a global chat, a private chat between
-                friends, or an in-game chat. We built all three.
-            </p>
-
-
-            <h2 class="project-p-title">Reasons to come back</h2>
-
-            <p class="project-p">
-                The brief asked for achievements and a leaderboard, with an Elo ranking for every profile. We built a
-                whole progression system around them. Completing an achievement now rewards players with SnellCoins, our
-                in-game currency, which they can spend in a shop inspired by Fortnite's: profile pictures, emote packs
-                for the chat, and themes that change the look of the pieces. Everything they buy lands in their
-                inventory. SnellCoins can also be bought through a Stripe payment link, running in sandbox mode for the
-                exercise.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/profile-page.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/inventory-page.png" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.progression"
-                (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">Accounts and security</h2>
-
-            <p class="project-p">
-                Some areas, such as online games and the AI, require being signed in: sessions rely on JWT tokens,
-                checked by the gateway, and passwords are hashed before being stored. Forgotten passwords can be reset
-                by email. And for the fun of it, we hid an alternative way in: the honesty test. First, declare whether
-                you're
-                honest. Then, drag and drop a set of statements into the « Liar » and « Honest » boxes. Get the
-                combination right after claiming to be honest, and you've proven you can be trusted... with resetting
-                anyone's password. Needless to say, this one is a joke, not a security feature.
-            </p>
-
-            <!-- <div class="picture-v-layout">
-                <img src="projects/snell/pictures/honesty-quiz.png" class="project-plain-img" alt="home-page">
-                <img src="projects/snell/pictures/honesty-quiz-2.png" class="project-plain-img" alt="home-page">
-            </div> -->
-            <app-project-gallery [pictures]="pictures.honesty" (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">On Android</h2>
-
-            <p class="project-p">
-                The project also had to ship as a mobile app. We wrapped the platform with Capacitor, redesigned the
-                interface for touch screens, and integrated a native feature of the device: local notifications,
-                triggered
-                when you receive a friend request or a challenge request.
-            </p>
-
-            <app-project-gallery [pictures]="pictures.mobile" mobile
-                (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">Running it for real</h2>
-
-            <p class="project-p">
-                Shipping features was one thing; keeping the platform healthy was another. We added a monitoring page
-                fed by the Docker socket and dedicated API endpoints: it shows the number of games in progress, the
-                state of each container, and so of each service, and the CPU and memory usage of the host machine.
-            </p>
-
-            <app-project-gallery [pictures]="pictures.monitoring"
-                (enlarge)="open_picture($event)"></app-project-gallery>
-
-
-            <p class="project-p">
-                The database is backed up automatically every night at 2 AM, when the fewest players are online. Three
-                scripts handle the whole cycle: one creates the backup and encrypts it with AES-256, one checks its
-                integrity by simulating a full restoration, and one restores the database when needed. Backups are kept
-                on a rolling 14-day window, so they never saturate the storage. The next step would have been to store
-                them on a separate server, so that losing the machine wouldn't mean losing the backups too.
-            </p>
-
-            <h2 class="project-p-title">From the cloud to my desk</h2>
-
-            <p class="project-p">
-                The course planned to deploy every project on an AWS instance. I chose to host Snell myself, on my own
-                Raspberry Pi: the services run with Docker Compose behind an nginx reverse proxy, and all traffic comes
-                in through a Cloudflare Tunnel, so no port is ever opened on my home network.
-            </p>
-
-            <app-project-gallery [pictures]="pictures.deployment"
-                (enlarge)="open_picture($event)"></app-project-gallery>
-
-            <h2 class="project-p-title">The Fullstack Contest</h2>
-
-            <p class="project-p">
-                Each year, the best projects of the class are selected to compete in the Fullstack Contest, and taking
-                part earns each team member a title of excellence awarded by the school. The format is inspired by « Ma
-                thèse en 180 secondes »: each team pitches its project on stage, in front of a lecture hall filled with
-                first-year students and a jury of company representatives. The pitch is followed by a speed-dating
-                session, where each team meets the jury members to go deeper into the project and answer their
-                questions. The jury then establishes a ranking to award the Jury Prize, while the audience votes for the
-                Audience Prize.
-            </p>
-
-            <p class="project-p single-row">This year, Snell won both!🥇🥇🎉</p>
-
-            <h2 class="project-p-title">Links</h2>
+            <p class="project-p">{{ t.game.rules }}</p>
+
+            <app-project-gallery [pictures]="pics.local_game" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <p class="project-p single-row">{{ t.game.theme }}</p>
+
+            <!-- ---------- Tout construire à la main ---------- -->
+
+            <h2 class="project-p-title">{{ t.by_hand.title }}</h2>
+            <p class="project-p">{{ t.by_hand.p }}</p>
+
+            <!-- ---------- Architecture ---------- -->
+
+            <h2 class="project-p-title">{{ t.architecture.title }}</h2>
+            <p class="project-p">{{ t.architecture.p1 }}</p>
+
+            <app-project-gallery [pictures]="pics.architecture" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <p class="project-p">{{ t.architecture.p2 }}</p>
+
+            <!-- ---------- Apprendre à jouer ---------- -->
+
+            <h2 class="project-p-title">{{ t.learning.title }}</h2>
+            <p class="project-p">{{ t.learning.p1 }}</p>
+
+            <app-project-gallery [pictures]="pics.tutorial" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <p class="project-p single-row">{{ t.learning.p2 }}</p>
+
+            <app-project-gallery [pictures]="pics.puzzles" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- Jouer ---------- -->
+
+            <h2 class="project-p-title">{{ t.playing.title }}</h2>
+            <p class="project-p">{{ t.playing.local }}</p>
+
+            <app-project-gallery [pictures]="pics.ai" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <p class="project-p">{{ t.playing.online }}</p>
+
+            <app-project-gallery [pictures]="pics.multiplayer" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- L'IA ---------- -->
+
+            <h2 class="project-p-title">{{ t.ai.title }}</h2>
+            <p class="project-p">{{ t.ai.intro }}</p>
+
+            <h3 class="project-p-subtitle">{{ t.ai.thinking.title }}</h3>
+            <p class="project-p">{{ t.ai.thinking.p }}</p>
+
+            <h3 class="project-p-subtitle">{{ t.ai.moves.title }}</h3>
+            <p class="project-p">{{ t.ai.moves.p }}</p>
+
+            <h3 class="project-p-subtitle">{{ t.ai.time.title }}</h3>
+            <p class="project-p">{{ t.ai.time.p }}</p>
+
+            <h3 class="project-p-subtitle">{{ t.ai.stopping.title }}</h3>
+            <p class="project-p">{{ t.ai.stopping.p }}</p>
+
+            <h3 class="project-p-subtitle">{{ t.ai.judging.title }}</h3>
+            <p class="project-p">{{ t.ai.judging.p }}</p>
+
+            <h3 class="project-p-subtitle">{{ t.ai.speed.title }}</h3>
+            <p class="project-p">{{ t.ai.speed.p }}</p>
+
+            <app-project-gallery [pictures]="pics.engine" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <h3 class="project-p-subtitle">{{ t.ai.ladder.title }}</h3>
+            <p class="project-p">{{ t.ai.ladder.p }}</p>
+
+            <p class="project-p single-row">{{ t.ai.outro }}</p>
+
+            <!-- ---------- Revoir une partie ---------- -->
+
+            <h2 class="project-p-title">{{ t.review.title }}</h2>
+            <p class="project-p">{{ t.review.p }}</p>
+
+            <app-project-gallery [pictures]="pics.review" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- Jouer ensemble ---------- -->
+
+            <h2 class="project-p-title">{{ t.together.title }}</h2>
+            <p class="project-p">{{ t.together.p }}</p>
+
+            <!-- ---------- Progression ---------- -->
+
+            <h2 class="project-p-title">{{ t.progression.title }}</h2>
+            <p class="project-p">{{ t.progression.p }}</p>
+
+            <app-project-gallery [pictures]="pics.progression" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- Comptes et sécurité ---------- -->
+
+            <h2 class="project-p-title">{{ t.security.title }}</h2>
+            <p class="project-p">{{ t.security.p }}</p>
+
+            <app-project-gallery [pictures]="pics.honesty" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- Android ---------- -->
+
+            <h2 class="project-p-title">{{ t.android.title }}</h2>
+            <p class="project-p">{{ t.android.p }}</p>
+
+            <app-project-gallery [pictures]="pics.mobile" mobile (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- En conditions réelles ---------- -->
+
+            <h2 class="project-p-title">{{ t.running.title }}</h2>
+            <p class="project-p">{{ t.running.monitoring }}</p>
+
+            <app-project-gallery [pictures]="pics.monitoring" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <p class="project-p">{{ t.running.backups }}</p>
+
+            <!-- ---------- Déploiement ---------- -->
+
+            <h2 class="project-p-title">{{ t.deployment.title }}</h2>
+            <p class="project-p">{{ t.deployment.p }}</p>
+
+            <app-project-gallery [pictures]="pics.deployment" (enlarge)="open_picture($event)"></app-project-gallery>
+
+            <!-- ---------- Concours ---------- -->
+
+            <h2 class="project-p-title">{{ t.contest.title }}</h2>
+            <p class="project-p">{{ t.contest.p }}</p>
+            <p class="project-p single-row">{{ t.contest.result }}</p>
+
+            <!-- ---------- Liens ---------- -->
+
+            <h2 class="project-p-title">{{ t.links.title }}</h2>
             <div class="links-container">
                 <div class="link-item">
-                    <svg class="media-ico github-ico" viewBox="0 0 73 73" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"
-                        aria-hidden="true">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <defs> </defs>
-                            <g id="team-collaboration/version-control/github" stroke="none" stroke-width="1" fill="none"
-                                fill-rule="evenodd">
-                                <g id="container" transform="translate(2.000000, 2.000000)" fill-rule="nonzero">
-                                    <rect id="mask" stroke="#000000" stroke-width="2" fill="#000000" x="-1" y="-1"
-                                        width="71" height="71" rx="14"> </rect>
-                                    <path
-                                        d="M58.3067362,21.4281798 C55.895743,17.2972267 52.6253846,14.0267453 48.4948004,11.615998 C44.3636013,9.20512774 39.8535636,8 34.9614901,8 C30.0700314,8 25.5585181,9.20549662 21.4281798,11.615998 C17.2972267,14.0266224 14.0269912,17.2972267 11.615998,21.4281798 C9.20537366,25.5590099 8,30.0699084 8,34.9607523 C8,40.8357654 9.71405782,46.1187277 13.1430342,50.8109917 C16.5716416,55.5036246 21.0008949,58.7507436 26.4304251,60.5527176 C27.0624378,60.6700211 27.5302994,60.5875152 27.8345016,60.3072901 C28.1388268,60.0266961 28.290805,59.6752774 28.290805,59.2545094 C28.290805,59.1842994 28.2847799,58.5526556 28.2730988,57.3588401 C28.2610487,56.1650247 28.2553926,55.1235563 28.2553926,54.2349267 L27.4479164,54.3746089 C26.9330843,54.468919 26.2836113,54.5088809 25.4994975,54.4975686 C24.7157525,54.4866252 23.9021284,54.4044881 23.0597317,54.2517722 C22.2169661,54.1004088 21.4330982,53.749359 20.7075131,53.1993604 C19.982297,52.6493618 19.4674649,51.9294329 19.1631397,51.0406804 L18.8120898,50.2328353 C18.5780976,49.6950097 18.2097104,49.0975487 17.7064365,48.4426655 C17.2031625,47.7871675 16.6942324,47.3427912 16.1794003,47.108799 L15.9336039,46.9328437 C15.7698216,46.815909 15.6178435,46.6748743 15.4773006,46.511215 C15.3368806,46.3475556 15.2317501,46.1837734 15.1615401,46.0197452 C15.0912072,45.855594 15.1494901,45.7209532 15.3370036,45.6153308 C15.5245171,45.5097084 15.8633939,45.4584343 16.3551097,45.4584343 L17.0569635,45.5633189 C17.5250709,45.6571371 18.104088,45.9373622 18.7947525,46.4057156 C19.4850481,46.8737001 20.052507,47.4821045 20.4972521,48.230683 C21.0358155,49.1905062 21.6846737,49.9218703 22.4456711,50.4251443 C23.2060537,50.9284182 23.9727072,51.1796248 24.744894,51.1796248 C25.5170807,51.1796248 26.1840139,51.121096 26.7459396,51.0046532 C27.3072505,50.8875956 27.8338868,50.7116403 28.3256025,50.477771 C28.5362325,48.9090515 29.1097164,47.7039238 30.0455624,46.8615271 C28.7116959,46.721353 27.5124702,46.5102313 26.4472706,46.2295144 C25.3826858,45.9484285 24.2825656,45.4922482 23.1476478,44.8597436 C22.0121153,44.2280998 21.0701212,43.44374 20.3214198,42.5080169 C19.5725954,41.571802 18.9580429,40.3426971 18.4786232,38.821809 C17.9989575,37.300306 17.7590632,35.5451796 17.7590632,33.5559381 C17.7590632,30.7235621 18.6837199,28.3133066 20.5326645,26.3238191 C19.6665366,24.1944035 19.7483048,21.8072644 20.778215,19.1626478 C21.4569523,18.951772 22.4635002,19.1100211 23.7973667,19.6364115 C25.1314792,20.1630477 26.1082708,20.6141868 26.7287253,20.9882301 C27.3491798,21.3621504 27.8463057,21.6790175 28.2208409,21.9360032 C30.3978419,21.3277217 32.644438,21.0235195 34.9612442,21.0235195 C37.2780503,21.0235195 39.5251383,21.3277217 41.7022622,21.9360032 L43.0362517,21.0938524 C43.9484895,20.5319267 45.0257392,20.0169716 46.2654186,19.5488642 C47.5058357,19.0810026 48.4543466,18.9521409 49.1099676,19.1630167 C50.1627483,21.8077563 50.2565666,24.1947724 49.3901927,26.324188 C51.2390143,28.3136755 52.1640399,30.7245457 52.1640399,33.556307 C52.1640399,35.5455485 51.9232849,37.3062081 51.444357,38.8393922 C50.9648143,40.3728223 50.3449746,41.6006975 49.5845919,42.5256002 C48.8233486,43.4503799 47.8753296,44.2285916 46.7404118,44.8601125 C45.6052481,45.4921252 44.504759,45.9483056 43.4401742,46.2293914 C42.3750975,46.5104772 41.1758719,46.7217219 39.8420054,46.8621419 C41.0585683,47.9149226 41.6669728,49.5767225 41.6669728,51.846804 L41.6669728,59.2535257 C41.6669728,59.6742937 41.8132948,60.0255895 42.1061847,60.3063064 C42.3987058,60.5865315 42.8606653,60.6690374 43.492678,60.5516109 C48.922946,58.7498829 53.3521992,55.5026409 56.7806837,50.810008 C60.2087994,46.117744 61.923472,40.8347817 61.923472,34.9597686 C61.9222424,30.0695396 60.7162539,25.5590099 58.3067362,21.4281798 Z"
-                                        id="Shape" fill="#FFFFFF"> </path>
-                                </g>
-                            </g>
-                        </g>
+                    <svg class="media-ico github-ico" aria-hidden="true">
+                        <use href="#github-icon"></use>
                     </svg>
-                    <a target="_blank" href="https://github.com/MkDriss/ps8-snell" class="link">Explore the code on
-                        Github</a>
+                    <a class="link" target="_blank" rel="noopener noreferrer"
+                        href="https://github.com/MkDriss/ps8-snell">{{ t.links.github }}</a>
                 </div>
             </div>
 
-            <h2 class="project-p-title">References</h2>
-            <p class="project-p single-row">
-                To go further on the AI techniques mentioned above, the Chess Programming Wiki
-                has a clear page for each of them: Minimax and Negamax, Alpha-Beta, Iterative Deepening, Principal
-                Variation Search, Late Move Reductions, Futility Pruning, Quiescence Search, Transposition Table,
-                Zobrist Hashing, Killer Heuristic and History Heuristic.
-            </p>
+            <!-- ---------- Références ---------- -->
+
+            <h2 class="project-p-title">{{ t.references.title }}</h2>
+            <p class="project-p single-row">{{ t.references.p }}</p>
 
             <div class="links-container">
                 <div class="link-item">
                     <img src="projects/snell/pictures/chessprogramming.png" class="media-ico" alt="">
-                    <a class="link" target="_blank" href="https://chessprogramming.org">Chess Programming</a>
+                    <a class="link" target="_blank" rel="noopener noreferrer" href="https://chessprogramming.org">Chess
+                        Programming</a>
                 </div>
             </div>
 
-            <h2 class="project-p-title">Related projects</h2>
+            <!-- ---------- Projets liés ---------- -->
+
+            <h2 class="project-p-title">{{ t.related.title }}</h2>
             <div class="projects-container">
-                @for (project of other_projects; track project.id; let i = $index) {
+                @for (project of other_projects; track project.id) {
                 <app-project-card appReveal [project]="project"
                     (click)="open_project_pop_up(project.id)"></app-project-card>
                 } @empty {
-                <p class="empty-state" appReveal>No project matches your search.</p>
+                <p class="empty-state" appReveal>{{ t.related.empty }}</p>
                 }
             </div>
         </div>
     </div>
 </div>
 
-
+<!-- bouton retour -->
 <div class="next-btn-container" appReveal revealTarget=".button" [revealDelay]="800">
-    <button class="button" (click)="this.home()">
+    <button class="button" (click)="home()">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M12 3C12.5523 3 13 3.44772 13 4V17.5858L18.2929 12.2929C18.6834 11.9024 19.3166 11.9024 19.7071 12.2929C20.0976 12.6834 20.0976 13.3166 19.7071 13.7071L12.7071 20.7071C12.3166 21.0976 11.6834 21.0976 11.2929 20.7071L4.29289 13.7071C3.90237 13.3166 3.90237 12.6834 4.29289 12.2929C4.68342 11.9024 5.31658 11.9024 5.70711 12.2929L11 17.5858V4C11 3.44772 11.4477 3 12 3Z"
                 fill="currentColor"></path>
         </svg>
-        <span class="home-btn-label">My projects</span>
+        <span class="home-btn-label">{{ t.ui.back }}</span>
     </button>
 </div>
 
