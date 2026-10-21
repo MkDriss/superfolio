@@ -4,7 +4,7 @@ const en = {
     description: "Description",
     type: "Type",
     category: "Category",
-    awards: "Awards",
+    awards: "Award",
 }
 
 const fr: typeof en = {

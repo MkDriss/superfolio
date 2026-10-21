@@ -11,7 +11,7 @@ const en = {
     header: {
         category: `Category`,
         type: `Type`,
-        awards: `Awards`,
+        awards: `Award`,
         technologies: `Technologies`,
         github: `View on Github`,
     },
