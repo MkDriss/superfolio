@@ -12,8 +12,8 @@ const fr: typeof en = {
     see_more: "Voir plus",
     description: "Description",
     type: "Type",
-    category: "Category",
-    awards: "Récompenses",
+    category: "Categorie",
+    awards: "Récompense",
 }
 
 export const PROJECT_POP_UP_TEXTS = { en, fr };

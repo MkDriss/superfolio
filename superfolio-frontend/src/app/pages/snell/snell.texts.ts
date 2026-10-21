@@ -13,7 +13,7 @@ const en = {
     header: {
         category: `Category`,
         type: `Type`,
-        awards: `Awards`,
+        awards: `Award`,
         technologies: `Technologies`,
         github: `View on Github`,
     },
@@ -202,7 +202,7 @@ const fr: typeof en = {
     header: {
         category: `Catégorie`,
         type: `Type`,
-        awards: `Récompenses`,
+        awards: `Récompense`,
         technologies: `Technologies`,
         github: `Voir sur GitHub`,
     },

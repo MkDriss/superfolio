@@ -5,7 +5,7 @@ const en = {
 }
 
 const fr: typeof en = {
-    title: "Redaction en cours !",
+    title: "Rédaction en cours !",
     description: "Bientôt disponible... 😉",
     home: "Accueuil"
 }

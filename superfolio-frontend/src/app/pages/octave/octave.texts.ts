@@ -188,7 +188,7 @@ const fr: typeof en = {
     header: {
         category: `Catégorie`,
         type: `Type`,
-        awards: `Récompenses`,
+        awards: `Récompense`,
         technologies: `Technologies`,
         github: `Voir sur GitHub`,
     },

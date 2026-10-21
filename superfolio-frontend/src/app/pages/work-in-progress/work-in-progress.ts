@@ -1,5 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { LanguageService } from '../../services/language-service/language';
+import { WORK_IN_PROGRESS_TEXTS } from './work-in-progress.texts';
 
 @Component({
   selector: 'app-work-in-progress',
@@ -11,11 +13,15 @@ export class WorkInProgress {
 
   private readonly router: Router = inject(Router);
 
-  public random_idx:number = 0;
+  private readonly language: LanguageService = inject(LanguageService);
 
-  constructor(){
+  public readonly texts = computed(() => WORK_IN_PROGRESS_TEXTS[this.language.lang()]);
+
+  public random_idx: number = 0;
+
+  constructor() {
     const min_length = Math.min(this.PICTURES_DESKTOP.length, this.PICTURES_MOBILE.length);
-    this.random_idx = Math.floor(Math.random() * min_length);    
+    this.random_idx = Math.floor(Math.random() * min_length);
   }
 
   public PICTURES_DESKTOP = [

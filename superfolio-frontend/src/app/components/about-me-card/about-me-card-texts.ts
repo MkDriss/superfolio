@@ -15,8 +15,13 @@ const en = {
         }
     },
 
+    cyber_references: {
+        title: "Cyber References"
+    },
+
     passions:
     {
+        title: "Passions",
         cybersecurity: "Cybersecurity 💻",
         skateboarding: "Skateboarding 🛹",
         calisthenics: "Calisthenics 💪",
@@ -41,8 +46,13 @@ const fr: typeof en = {
         }
     },
 
+    cyber_references: {
+        title: "Références cyber"
+    },
+
     passions:
     {
+        title: "Passions",
         cybersecurity: "Cybersecurité 💻",
         skateboarding: "Skateboard 🛹",
         calisthenics: "Calisthenie 💪",

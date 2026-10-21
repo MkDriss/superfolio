@@ -8,7 +8,7 @@
 
         <!-- le conteneur n'est pas animé : ses enfants sont en verre (voir la note sur l'opacité) -->
         <div class="search-section">
-            <input #search_input type="search" class="search-input" placeholder="Search a project"
+            <input #search_input type="search" class="search-input" placeholder="{{t.search_project}}"
                 aria-label="Search a project" (keydown.enter)="search(search_input.value)" appReveal
                 [revealDelay]="100">
 
