@@ -332,7 +332,7 @@ const fr: typeof en = {
 
     links: {
         title: `Liens`,
-        github: `Explorer le code sur GitHub`,
+        github: `Voir le code sur GitHub`,
     },
 
     references: {

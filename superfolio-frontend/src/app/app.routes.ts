@@ -4,6 +4,7 @@ import { WorkInProgress } from './pages/work-in-progress/work-in-progress';
 import { NotFound } from './pages/not-found/not-found';
 import { Octave } from './projects/octave/octave';
 import { Snell } from './projects/snell/snell';
+import { Rmap } from './projects/rmap/rmap';
 
 export const routes: Routes = [
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'my-projects/nas-home-server', component: WorkInProgress },
     { path: 'my-projects/esp32-marauder', component: WorkInProgress },
     { path: 'my-projects/sec-lab-iot-iam', component: WorkInProgress },
+    { path: 'my-projects/rmap', component: Rmap},
     
     { path: '**', component: NotFound },
 ];
