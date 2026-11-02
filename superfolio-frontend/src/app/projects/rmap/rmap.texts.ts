@@ -90,6 +90,12 @@ const en = {
         p4: `The downside: a machine whose firewall ignores everything goes unnoticed. That is why discovery is not enabled by default. A security tool should never set machines aside unless it is asked to.`,
     },
 
+    names: {
+        title: `Putting a name on each machine`,
+        p1: `An address like 192.168.50.23 does not say much. For each machine it displays, rmap therefore asks the system for its name, just as nmap does: this is reverse DNS resolution. On a local network, the router often knows the name each device announces when it connects, and the report becomes readable at a glance.`,
+        p2: `This lookup has a subtle cost: every name requested leaves a trace on the DNS server. rmap therefore only looks up the machines it displays, in parallel and with a time limit, and the -n option skips it entirely, just like in nmap.`,
+    },
+
     reliability: {
         title: `A security tool must not lie`,
         p1: `The most instructive moment of the project came from testing. By deliberately limiting system resources, the scanner started reporting open ports as closed, without any warning. For a security tool, this is the worst possible flaw: it gives a false sense of security.`,
@@ -242,6 +248,12 @@ const fr: typeof en = {
         // image : reliability-after.png (capture du terminal, version actuelle)
         after_label: `Après : le problème est détecté et signalé.`,
         p2: `La correction s'est faite en trois temps : reproduire le problème par un test, le rendre visible avec un quatrième état « erreur » et un avertissement explicite, puis le corriger en rendant réglable le nombre de connexions simultanées. Le même principe guide tout le reste : si une partie du scan échoue, le programme continue, mais le bilan indique toujours ce qui n'a pas pu être testé.`,
+    },
+
+    names: {
+        title: `Mettre un nom sur chaque machine`,
+        p1: `Une adresse comme 192.168.50.23 ne dit pas grand-chose. Pour chaque machine affichée, rmap demande donc son nom au système, comme le fait nmap : c'est la résolution DNS inverse. Sur un réseau local, le routeur connaît souvent le nom que chaque objet annonce en se connectant, et le rapport devient lisible d'un coup d'œil.`,
+        p2: `Cette recherche a un coût discret : chaque nom demandé laisse une trace sur le serveur DNS. rmap ne cherche donc que le nom des machines affichées, en parallèle et avec un délai maximal, et l'option -n permet de s'en passer complètement, comme chez nmap.`,
     },
 
     quality: {
