@@ -1,4 +1,4 @@
-import { python, rust, cpp, arduino, docker, linux } from "../../mocks/technology.mock";
+import { python, rust, cpp, arduino, docker, linux, raspberry_pi } from "../../mocks/technology.mock";
 import { ProjectType, ProjectCategory } from "../../model/project.model";
 
 export const SECURITY_LAB_IOT_IAM = {
@@ -21,6 +21,7 @@ export const SECURITY_LAB_IOT_IAM = {
         rust,
         cpp,
         arduino,
+	raspberry_pi,
         docker,
         linux
     ],
