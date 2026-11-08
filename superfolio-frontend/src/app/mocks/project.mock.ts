@@ -19,9 +19,9 @@ const project_list: Project[] = [
     NAS_HOME_SERVER,
     OCTAVE,
     ESP32_MARAUDER,
-    SKIMASTER,
-    SOPHIATECH_EAT,
-    LETS_GO_BIKING,
+    // SKIMASTER,
+    // SOPHIATECH_EAT,
+    // LETS_GO_BIKING,
 
 ]
 
