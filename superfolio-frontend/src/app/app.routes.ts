@@ -5,6 +5,7 @@ import { NotFound } from './pages/not-found/not-found';
 import { Octave } from './projects/octave/octave';
 import { Snell } from './projects/snell/snell';
 import { Rmap } from './projects/rmap/rmap';
+import { Rnifler } from './projects/rnifler/rnifler';
 
 export const routes: Routes = [
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'my-projects/esp32-marauder', component: WorkInProgress },
     { path: 'my-projects/sec-lab-iot-iam', component: WorkInProgress },
     { path: 'my-projects/rmap', component: Rmap},
+    { path: 'my-projects/rnifler', component: Rnifler},
     
     { path: '**', component: NotFound },
 ];
