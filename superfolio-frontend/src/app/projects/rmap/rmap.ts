@@ -47,6 +47,7 @@ export class Rmap {
   public readonly pictures = computed(() => {
     const alt = this.texts().alts;
     return {
+      rmap_usage: [picture("rmap-usage.png", alt.rmap-usage)],
       open_port: [picture("open-port-tcp.png", alt.open_port)],
       closed_port: [picture("closed-port-tcp.png", alt.closed_port)],
       filtered_port: [picture("filtered-port-tcp.png", alt.filtered_port)],

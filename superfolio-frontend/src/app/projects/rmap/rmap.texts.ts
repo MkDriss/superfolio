@@ -140,6 +140,7 @@ const en = {
 
     // textes alternatifs des images
     alts: {
+        rmap_usage: `Rmap scan example`,
         open_port: `Open port: the scanner sends a connection request, the machine accepts it, then the scanner confirms.`,
         closed_port: `Closed port: the scanner sends a connection request, and the machine refuses it right away.`,
         filtered_port: `Filtered port: the scanner's connection request breaks off along the way, and no answer comes back.`,
@@ -290,6 +291,7 @@ const fr: typeof en = {
 
     // textes alternatifs des images
     alts: {
+        rmap_usage: `Exemple de Scan rmap`,
         open_port: `Port ouvert : le scanner envoie une demande de connexion, la machine l'accepte, puis le scanner confirme.`,
         closed_port: `Port fermé : le scanner envoie une demande de connexion, et la machine la refuse aussitôt.`,
         filtered_port: `Port filtré : la demande de connexion du scanner s'interrompt en chemin, et aucune réponse ne revient.`,

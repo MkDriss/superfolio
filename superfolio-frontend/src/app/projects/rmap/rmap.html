@@ -71,6 +71,9 @@
 
             <p class="project-p">{{ t.intro.p }}</p>
 
+            <app-project-gallery [pictures]="pics.rmap_usage" (enlarge)="open_picture($event)"></app-project-gallery>
+
+
             <!-- ---------- Pourquoi ? ---------- -->
 
             <h2 class="project-p-title">{{ t.why.title }}</h2>
