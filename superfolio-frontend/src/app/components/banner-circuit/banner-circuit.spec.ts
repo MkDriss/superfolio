@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SecurityLabIotIam } from './security-lab-iot-iam';
+import { BannerCircuit } from './banner-circuit';
 
-describe('SecurityLabIotIam', () => {
-  let component: SecurityLabIotIam;
-  let fixture: ComponentFixture<SecurityLabIotIam>;
+describe('BannerCircuit', () => {
+  let component: BannerCircuit;
+  let fixture: ComponentFixture<BannerCircuit>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SecurityLabIotIam],
+      imports: [BannerCircuit],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SecurityLabIotIam);
+    fixture = TestBed.createComponent(BannerCircuit);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

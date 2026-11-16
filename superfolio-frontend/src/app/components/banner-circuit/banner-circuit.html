@@ -1,0 +1,11 @@
+<div #stage class="bc-stage" [style.--bc-accent]="accent" [style.--bc-accent-light]="accentLight"
+  [style.--bc-accent-dark]="accentDark">
+
+  <canvas #cv class="bc-canvas" aria-hidden="true"></canvas>
+
+  <div #titleEl class="bc-title">
+    <p class="bc-kicker">{{ kicker }}</p>
+    <h1 class="bc-name">{{ title }}</h1>
+    <p class="bc-subtitle">{{ subtitle }}</p>
+  </div>
+</div>

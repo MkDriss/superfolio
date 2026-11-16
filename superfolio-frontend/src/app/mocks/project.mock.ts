@@ -1,18 +1,18 @@
 import { Project } from "../model/project.model";
 import { ESP32_MARAUDER } from "../projects/esp32-marauder/esp32-marauder.project";
+import { BREAKING_TRUST } from "../projects/iot-security-lab/breaking-trust/breaking-trust.project";
 import { LETS_GO_BIKING } from "../projects/lets-go-biking/lets-go-biking.project";
 import { NAS_HOME_SERVER } from "../projects/nas-home-server/nas-home-server.project";
 import { OCTAVE } from "../projects/octave/octave.project";
 import { RMAP } from "../projects/rmap/rmap.project";
 import { RNIFLER } from "../projects/rnifler/rnifler.project";
-import { SECURITY_LAB_IOT_IAM } from "../projects/security-lab-iot-iam/security-lab-iot.iam.project";
 import { SKIMASTER } from "../projects/skimaster/skimaster.project";
 import { SNELL } from "../projects/snell/snell.project";
 import { SOPHIATECH_EAT } from "../projects/sophiatech-eat/sophiatech-eat.project";
 
 
 const project_list: Project[] = [
-    SECURITY_LAB_IOT_IAM,
+    BREAKING_TRUST,
     RNIFLER,
     RMAP,
     SNELL,

@@ -15,7 +15,7 @@ import { PROJECT_POP_UP_TEXTS } from './project-pop-up.text';
   styleUrl: './project-pop-up.scss',
 })
 export class ProjectPopUp implements OnInit, OnDestroy {
-  private readonly projectService: ProjectService = inject(ProjectService);
+  
   public readonly language: LanguageService = inject(LanguageService);
 
   public readonly texts = computed(() => PROJECT_POP_UP_TEXTS[this.language.lang()]);

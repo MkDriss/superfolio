@@ -6,6 +6,7 @@ import { Octave } from './projects/octave/octave';
 import { Snell } from './projects/snell/snell';
 import { Rmap } from './projects/rmap/rmap';
 import { Rnifler } from './projects/rnifler/rnifler';
+import { BreakingTrust } from './projects/iot-security-lab/breaking-trust/breaking-trust';
 
 export const routes: Routes = [
 
@@ -19,7 +20,7 @@ export const routes: Routes = [
     { path: 'my-projects/nas-home-server', component: WorkInProgress },
     { path: 'my-projects/esp32-marauder', component: WorkInProgress },
     { path: 'my-projects/sec-lab-iot-iam', component: WorkInProgress },
-    { path: `my-projects/iot-security-lab/breaking-trust`, component: WorkInProgress },
+    { path: `my-projects/iot-security-lab/breaking-trust`, component: BreakingTrust },
     { path: `my-projects/iot-security-lab/rebuilding-trust`, component: WorkInProgress },
     { path: 'my-projects/rmap', component: Rmap},
     { path: 'my-projects/rnifler', component: Rnifler},

@@ -1,0 +1,35 @@
+@if (videos.length > 0) {
+<div class="gallery">
+
+    <!-- Lecteur principal : lecture sur place, contrôles natifs, pas d'overlay.
+         #player sert à mettre la vidéo en pause quand on change d'onglet. -->
+    <video #player class="main-video" controls preload="metadata" playsinline
+        [src]="current_video.src" [poster]="current_video.poster ?? null"
+        [attr.aria-label]="current_video.alt">
+    </video>
+
+    @if (videos.length > 1) {
+    <div class="thumbs" role="tablist">
+        @for (video of videos; track video.src; let i = $index) {
+        <button class="thumb" type="button" role="tab" [class.thumb--active]="i === current_index"
+            [attr.aria-selected]="i === current_index" (click)="select(i, player)">
+
+            @if (video.poster) {
+            <img class="thumb-img" [src]="video.poster" [alt]="video.alt" loading="lazy">
+            } @else {
+            <span class="thumb-placeholder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </span>
+            }
+
+            @if (video.label) {
+            <span class="thumb-label">{{ video.label }}</span>
+            }
+        </button>
+        }
+    </div>
+    }
+</div>
+}

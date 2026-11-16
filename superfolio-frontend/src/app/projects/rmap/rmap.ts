@@ -3,7 +3,7 @@ import { RMAP } from './rmap.project';
 import { Router } from '@angular/router';
 import { Project, PROJECT_CATEGORY_LABELS, PROJECT_TYPE_LABELS } from '../../model/project.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { SECURITY_LAB_IOT_IAM } from '../security-lab-iot-iam/security-lab-iot.iam.project';
+
 import { LanguageService } from '../../services/language-service/language';
 import { RMAP_TEXTS } from './rmap.texts';
 import { GalleryPicture, ProjectGallery } from '../../components/project-gallery/project-gallery';
@@ -11,6 +11,8 @@ import { ProjectPopUp } from '../../components/project-pop-up/project-pop-up';
 import { RevealDirective } from '../../directives/reveal.directive';
 import { PictureLightbox } from '../../components/picture-lightbox/picture-lightbox';
 import { ProjectCard } from '../../components/project-card/project-card';
+import { BREAKING_TRUST } from '../iot-security-lab/breaking-trust/breaking-trust.project';
+import { RNIFLER } from '../rnifler/rnifler.project';
 
 
 const PICTURES_PATH = 'projects/rmap/pictures/';
@@ -29,7 +31,7 @@ export class Rmap {
   private readonly router: Router = inject(Router);
   private readonly sanitizer: DomSanitizer = inject(DomSanitizer);
 
-  public readonly other_projects = [SECURITY_LAB_IOT_IAM];
+  public readonly other_projects = [BREAKING_TRUST, RNIFLER];
 
   public readonly PROJECT_CATEGORY_LABELS = PROJECT_CATEGORY_LABELS;
   public readonly PROJECT_TYPE_LABELS = PROJECT_TYPE_LABELS;
