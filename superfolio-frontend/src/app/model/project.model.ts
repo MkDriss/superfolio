@@ -14,6 +14,7 @@ export interface Project {
     overview_pictures: string[],
     description: Localized,
     award?: Award,
+    git_url?: string,
 }
 
 interface Award {

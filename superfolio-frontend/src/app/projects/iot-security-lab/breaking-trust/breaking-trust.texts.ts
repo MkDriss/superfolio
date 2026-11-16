@@ -196,6 +196,11 @@ const en = {
     schema_mitm: `Diagram: before poisoning the attacker is off the path. After, all traffic between the device and the broker passes through them.`,
     schema_proxy: `Diagram comparing in-flight alteration, limited by a fixed packet length, with the transparent proxy that frees the length by reopening the connection.`,
   },
+
+  links: {
+    title: `Links`,
+    github: `Explore the code on Github`,
+  },
 };
 
 const fr: typeof en = {
@@ -387,6 +392,11 @@ const fr: typeof en = {
     blind: `Vidéo : la LED de l'actionneur change réellement d'état tandis que la supervision du broker reste figée sur "OFF".`,
     schema_mitm: `Schéma : avant l'empoisonnement l'attaquant est à l'écart du chemin. Après, tout le trafic entre l'objet et le broker transite par lui.`,
     schema_proxy: `Schéma comparant l'altération en vol, bridée par une longueur de paquet figée, et le proxy transparent qui, en rouvrant la connexion, libère la longueur.`,
+  },
+
+  links: {
+    title: `Liens`,
+    github: `Voir le code sur GitHub`,
   },
 };
 

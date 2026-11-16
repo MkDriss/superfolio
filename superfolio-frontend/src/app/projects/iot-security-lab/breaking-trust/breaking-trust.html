@@ -26,10 +26,7 @@
   </div>
 
 
-<app-banner-circuit
-  [title]="'IoT Security Lab'"
-  [subtitle]="'Breaking Trust'"
-  [seed]="12345" />
+  <app-banner-circuit [title]="'IoT Security Lab'" [subtitle]="'Breaking Trust'" [seed]="12345" />
   <!-- <app-banner-circuit
   accent="#378add" accentLight="#85b7eb" accentDark="#185fa5"
   direction="outward"
@@ -50,8 +47,7 @@
             <dd>{{this.language.pick(PROJECT_CATEGORY_LABELS[breaking_trust.category])}}</dd>
           </div>
           <div class="meta-row github-desktop">
-            <a class="header-link" target="_blank" rel="noopener noreferrer"
-              href="https://github.com/MkDriss/iot-sec-lab-breaking_trust">
+            <a class="header-link" target="_blank" rel="noopener noreferrer" [href]="breaking_trust.git_url">
               {{ t.header.github }}
               <svg class="github-ico" aria-hidden="true">
                 <use href="#github-icon"></use>
@@ -73,8 +69,7 @@
         </div>
 
         <div class="meta-row github-mobile">
-          <a class="header-link" target="_blank" rel="noopener noreferrer"
-            href="https://github.com/MkDriss/ps8-breaking_trust">
+          <a class="header-link" target="_blank" rel="noopener noreferrer" [href]="breaking_trust.git_url">
             {{ t.header.github }}
             <svg class="github-ico" aria-hidden="true">
               <use href="#github-icon"></use>
@@ -446,6 +441,17 @@
         </div>
       </div>
     </section>
+
+    <h2 class="project-p-title">{{ t.links.title }}</h2>
+    <div class="links-container">
+      <div class="link-item">
+        <svg class="github-ico" aria-hidden="true">
+          <use href="#github-icon"></use>
+        </svg>
+        <a class="link" target="_blank" rel="noopener noreferrer" [href]="breaking_trust.git_url">{{
+          t.links.github }}</a>
+      </div>
+    </div>
 
     <!-- ============ Projets lies ============ -->
     <section class="other-project-container" appReveal>

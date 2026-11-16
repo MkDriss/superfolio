@@ -1,7 +1,7 @@
 import { rust, python, cpp, mqtt } from "../../../mocks/technology.mock";
-import { ProjectType, ProjectCategory } from "../../../model/project.model";
+import { ProjectType, ProjectCategory, Project } from "../../../model/project.model";
 
-export const BREAKING_TRUST = {
+export const BREAKING_TRUST: Project = {
     id: -2,
     name: "IoT Security Lab - Breaking Trust",
     type: ProjectType.HOME,
