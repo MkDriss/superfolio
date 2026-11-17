@@ -1,6 +1,7 @@
 import { Project } from "../model/project.model";
 import { ESP32_MARAUDER } from "../projects/esp32-marauder/esp32-marauder.project";
 import { BREAKING_TRUST } from "../projects/iot-security-lab/breaking-trust/breaking-trust.project";
+import { REBUILDING_TRUST } from "../projects/iot-security-lab/rebuilding-trust/rebuilding-trust.project";
 import { LETS_GO_BIKING } from "../projects/lets-go-biking/lets-go-biking.project";
 import { NAS_HOME_SERVER } from "../projects/nas-home-server/nas-home-server.project";
 import { OCTAVE } from "../projects/octave/octave.project";
@@ -12,6 +13,7 @@ import { SOPHIATECH_EAT } from "../projects/sophiatech-eat/sophiatech-eat.projec
 
 
 const project_list: Project[] = [
+    // REBUILDING_TRUST,
     BREAKING_TRUST,
     RNIFLER,
     RMAP,

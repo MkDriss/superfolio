@@ -134,7 +134,7 @@ export class BreakingTrust {
     }
 
     public go_to_part_two(): void {
-        this.router.navigate(["/",]);
+        this.router.navigate(["/my-projects/iot-security-lab/rebuilding-trust",]);
     }
 
     // ---------- Pop-up des projets liés ----------
