@@ -19,7 +19,7 @@ export const routes: Routes = [
     { path: 'my-projects/lets-go-biking', component: WorkInProgress },
     { path: 'my-projects/nas-home-server', component: WorkInProgress },
     { path: 'my-projects/esp32-marauder', component: WorkInProgress },
-    { path: 'my-projects/sec-lab-iot-iam', component: WorkInProgress },
+    { path: 'my-projects/sec-lab-iot-iam', component: BreakingTrust },
     { path: `my-projects/iot-security-lab/breaking-trust`, component: BreakingTrust },
     { path: `my-projects/iot-security-lab/rebuilding-trust`, component: WorkInProgress },
     { path: 'my-projects/rmap', component: Rmap},
